@@ -1,0 +1,10 @@
+*
+
+!.gitignore
+
+# Unignore C  afiles
+!*.c    
+!*.sh
+
+# Unignore all dirs
+!*/

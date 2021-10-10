@@ -6,7 +6,7 @@ int productOfNumberDigits(int number)
 
     while (number != 0)
     {
-        rem = number % 10; 
+        rem = number % 10;
         product *= rem;
         number /= 10;
     }
@@ -23,12 +23,11 @@ int main(void)
 
     for (int i = 10; result == 0; i++)
     {
-        if (i == 13) result == 1;
-
-        printf(i);
+        if (productOfNumberDigits(i) == inputNumber)
+        {
+            result = i;
+        }
     }
-
-    result = productOfNumberDigits(inputNumber);
 
     printf("Result: %d", result);
 
