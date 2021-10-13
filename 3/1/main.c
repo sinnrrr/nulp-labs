@@ -11,6 +11,7 @@ int main(void)
     if (argsNum < 2)
     {
         puts("Vector should have minimum 2 elements to proceed");
+
         return 1;
     }
 

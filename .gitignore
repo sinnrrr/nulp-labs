@@ -2,8 +2,9 @@
 
 !.gitignore
 
-# Unignore C  afiles
-!*.c    
+# Unignore project files
+!*.c
+!*.h
 !*.sh
 
 # Unignore all dirs

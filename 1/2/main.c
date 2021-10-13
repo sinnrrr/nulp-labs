@@ -1,24 +1,17 @@
 #include <stdio.h>
 
-typedef enum
-{
-    true,
-    false,
-    null
-} bool;
-
 struct Charges
 {
-    bool sin, cos, tg, ctg;
+    short sin, cos, tg, ctg;
 };
 
-char *get_charge_char(bool charge)
+char *getChargeChar(short charge)
 {
-    if (charge)
+    if (charge == 1)
     {
         return "positive";
     }
-    else if (!charge)
+    else if (charge == -1)
     {
         return "negative";
     }
@@ -57,66 +50,66 @@ int main(void)
 
     if (degree == 0)
     {
-        charges.sin = null;
-        charges.cos = true;
-        charges.tg = null;
-        charges.ctg = null;
+        charges.sin = 0;
+        charges.cos = 1;
+        charges.tg = 0;
+        charges.ctg = 0;
     }
     else if (degree < 90)
     {
-        charges.sin = true;
-        charges.cos = true;
-        charges.tg = true;
-        charges.ctg = true;
+        charges.sin = 1;
+        charges.cos = 1;
+        charges.tg = 1;
+        charges.ctg = 1;
     }
     else if (degree == 90)
     {
-        charges.sin = true;
-        charges.cos = null;
-        charges.tg = null;
-        charges.ctg = null;
+        charges.sin = 1;
+        charges.cos = 0;
+        charges.tg = 0;
+        charges.ctg = 0;
     }
     else if (degree < 180)
     {
-        charges.sin = true;
-        charges.cos = false;
-        charges.tg = false;
-        charges.ctg = false;
+        charges.sin = 1;
+        charges.cos = -1;
+        charges.tg = -1;
+        charges.ctg = -1;
     }
     else if (degree == 180)
     {
-        charges.sin = null;
-        charges.cos = false;
-        charges.tg = null;
-        charges.ctg = null;
+        charges.sin = 0;
+        charges.cos = -1;
+        charges.tg = 0;
+        charges.ctg = 0;
     }
     else if (degree < 270)
     {
-        charges.sin = false;
-        charges.cos = false;
-        charges.tg = true;
-        charges.ctg = true;
+        charges.sin = -1;
+        charges.cos = -1;
+        charges.tg = 1;
+        charges.ctg = 1;
     }
     else if (degree == 270)
     {
-        charges.sin = false;
-        charges.cos = null;
-        charges.tg = null;
-        charges.ctg = null;
+        charges.sin = -1;
+        charges.cos = 0;
+        charges.tg = 0;
+        charges.ctg = 0;
     }
     else if (degree < 360)
     {
-        charges.sin = false;
-        charges.cos = false;
-        charges.tg = true;
-        charges.ctg = true;
+        charges.sin = -1;
+        charges.cos = -1;
+        charges.tg = 1;
+        charges.ctg = 1;
     }
 
     printf("\nResults: \n");
-    printf("sin: %s\n", get_charge_char(charges.sin));
-    printf("cos: %s\n", get_charge_char(charges.cos));
-    printf("tg: %s\n", get_charge_char(charges.tg));
-    printf("ctg: %s\n", get_charge_char(charges.ctg));
+    printf("sin: %s\n", getChargeChar(charges.sin));
+    printf("cos: %s\n", getChargeChar(charges.cos));
+    printf("tg: %s\n", getChargeChar(charges.tg));
+    printf("ctg: %s\n", getChargeChar(charges.ctg));
 
     return 0;
 }
