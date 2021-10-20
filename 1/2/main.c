@@ -27,18 +27,25 @@ int main(void)
     printf("Enter degree value: ");
     scanf("%lf", &degree);
 
-    // Substracting with remainder
-    while (degree <= -360 && degree >= 360)
+    if (degree < -360 || degree > 360)
     {
-        if (degree > 0)
-        {
-            degree = degree - 360;
-        }
-        else
-        {
-            degree = degree + 360;
-        }
+        puts("Must be in range of -360 and 360");
+
+        return 1;
     }
+
+    // // Substracting with remainder
+    // while (degree <= -360 && degree >= 360)
+    // {
+    //     if (degree > 0)
+    //     {
+    //         degree = degree - 360;
+    //     }
+    //     else
+    //     {
+    //         degree = degree + 360;
+    //     }
+    // }
 
     // Making a period to have a positive degree
     if (degree < 0)
