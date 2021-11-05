@@ -37,11 +37,7 @@ void readParametersFromFile(char filename[FILENAME_LENGTH], struct Record *recor
 {
     FILE *file = fopen(filename, "r");
 
-    while (fread(record, sizeof(struct Record), 1, file))
-    {
-        printf("l");
-    }
-
+    fread(record, sizeof(struct Record), 1, file);
     fclose(file);
 }
 
