@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int MATRIX_SIZE = 5;
+static const int MATRIX_SIZE = 5;
 
-int diagonal_values[MATRIX_SIZE];
+int diagonalValues[MATRIX_SIZE];
 int matrix[MATRIX_SIZE][MATRIX_SIZE];
 
 void swap(int* xp, int* yp)
@@ -47,7 +47,7 @@ void askMatrixInput()
 
             if (i == j)
             {
-                diagonal_values[i] = matrix[i][j];
+                diagonalValues[i] = matrix[i][j];
             }
         }
     }
@@ -60,7 +60,7 @@ void outputDiagonalValues()
     // The size of matrix correlates with amount of diagonal elements
     for (int i = 0; i < MATRIX_SIZE; i++)
     {
-        printf("%d ", diagonal_values[i]);
+        printf("%d ", diagonalValues[i]);
     }
 }
 

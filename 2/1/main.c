@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    int number, reversed, last;
+    int number, reversed = 0, last;
 
     printf("Enter number: ");
     scanf("%d", &number);

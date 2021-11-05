@@ -25,6 +25,14 @@ void writeResultToFile(char filename[FILENAME_LENGTH], unsigned short isBinary, 
     fclose(file);
 }
 
+void writeParametersToFile(char filename[FILENAME_LENGTH], struct Record record)
+{
+    FILE *file = fopen(filename, "w");
+
+    fwrite(&record, sizeof(record), 1, file);
+    fclose(file);
+}
+
 void readParametersFromFile(char filename[FILENAME_LENGTH], struct Record *record)
 {
     FILE *file = fopen(filename, "r");
@@ -64,23 +72,28 @@ int main(void)
     double result;
     struct Record record;
     unsigned short isBinary;
-    char filename[FILENAME_LENGTH];
+    char paramsFilename[FILENAME_LENGTH], resultFilename[FILENAME_LENGTH];
 
     logToFile("Program started.");
 
-    printf("Enter filename (max 63 characters): ");
-    scanf("%s", filename);
+    printf("Enter params filename (max 63 characters): ");
+    scanf("%s", paramsFilename);
 
-    if (access(filename, F_OK) == 0)
+    if (access(paramsFilename, F_OK) == 0)
     {
-        readParametersFromFile(filename, &record);
-        logToFile("Parameters file \"%s\" opened. X=%lf, Y=%lf, U=%lf.", filename, &record.x, &record.y, &record.u);
+        readParametersFromFile(paramsFilename, &record);
+        logToFile("Parameters file \"%s\" opened. X=%lf, Y=%lf, U=%lf.", paramsFilename, &record.x, &record.y, &record.u);
     }
     else
     {
         printf("Enter x, y, u: ");
         scanf("%lf %lf %lf", &record.x, &record.y, &record.u);
+
+        writeParametersToFile(paramsFilename, record);
     }
+
+    printf("Enter result filename (max 63 characters): ");
+    scanf("%s", resultFilename);
 
     printf("Should result file be in binary? (1 - yes, 0 - no): ");
     scanf("%hu", &isBinary);
@@ -88,8 +101,8 @@ int main(void)
     result = calculateWithFormula(record);
     logToFile("Expression calculated. Result = %lf.", &result);
 
-    writeResultToFile(filename, isBinary, result);
-    logToFile("Output file \"%s\" saved.", filename);
+    writeResultToFile(resultFilename, isBinary, result);
+    logToFile("Output file \"%s\" saved.", resultFilename);
     printf("Result: %lf", result);
 
     logToFile("Program ended.");

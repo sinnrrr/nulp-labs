@@ -1,40 +1,41 @@
-// #include <stdio.h>
-// #include <math.h>
+#include <math.h>
+#include <stdio.h>
 
-// int main()
-// {
-//     double step, start, end;
-//     double eps = 1E-200;
+int main(void)
+{
+    double start, end, step, eps;
 
-//     printf("Enter step, start and end of the line: ");
-//     scanf("%lf %lf %lf", &step, &start, &end);
+    printf("Enter start, end, step and eps: ");
+    scanf("%lf %lf %lf %lf", &start, &end, &step, &eps);
 
-//     if(fabs(start) >= 1 || fabs(end) >= 1 || start > end || step > fabs(start - end))
-//     {
-//         printf("Valid bounds: (-1,1), don't make step too big!\n");
-//         return 0;
-//     }
-//     double x = start;
-//     while(x < end)
-//     {
-//         double formula = pow(1 + x, -3);
-//         double result = 0;
-//         double diff = 0;
+    if (fabs(start) >= 1 || fabs(end) >= 1)
+    {
+        puts("Start or end should be in range of -1 and 1");
 
-//         int n = 0;
-//         do
-//         {
-//             diff = 0.5*pow(x,n)*(pow(-1,n)*(1+n)*(2+n));
-//             result += diff;
-//             n++;
-//         } while(fabs(diff) > eps); //do it until we have a nice precision
+        return 1;
+    }
 
-//         printf("x = % .1lf |\t\t", x);
-//     	printf("formula = % .6lf |\t\t", formula);
-//     	printf("taylor = % .6lf\n", result);
-//     	printf("----------------------------------------------------------------------------\n");
-//         x += step;
-//     }
+    for (double x = start; x < end; x += step)
+    {
+        double currentAddition = 1, teylorCalculationResult = 1;
+        double formulaCalculationResult = pow(1 - x, -0.5);
 
-//     return 0;
-// }
+        for (int i = 2; fabs(currentAddition) > eps; i += 2)
+        {
+            // Division causes conversion to int, so staying with double
+            currentAddition *= ((double)(i - 1) / i) * x;
+            teylorCalculationResult += currentAddition;
+        }
+
+        double calculationsDelta = fabs(formulaCalculationResult - teylorCalculationResult);
+
+        printf(
+            "x: %g formula: %lf teylor: %lf delta: %lf\n",
+            x,
+            formulaCalculationResult,
+            teylorCalculationResult,
+            calculationsDelta);
+    }
+
+    return 0;
+}
