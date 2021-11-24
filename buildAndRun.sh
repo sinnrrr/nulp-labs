@@ -29,4 +29,4 @@ elif [[ -d $2 ]]; then
     calculations="$2/$LINK_FILE_NAME"
 fi
 
-clang $filepath $calculations -o $OUTPUT_FILE_NAME && chmod +x $OUTPUT_FILE_NAME && ./$OUTPUT_FILE_NAME
+clang $filepath $calculations -Wall -o $OUTPUT_FILE_NAME && chmod +x $OUTPUT_FILE_NAME && ./$OUTPUT_FILE_NAME

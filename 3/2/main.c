@@ -3,10 +3,7 @@
 
 static const int MATRIX_SIZE = 5;
 
-int diagonalValues[MATRIX_SIZE];
-int matrix[MATRIX_SIZE][MATRIX_SIZE];
-
-void swap(int* xp, int* yp)
+void swap(int *xp, int *yp)
 {
     int temp = *xp;
     *xp = *yp;
@@ -14,30 +11,32 @@ void swap(int* xp, int* yp)
 }
 
 // Is being used to sort diagonal values in ascending order
-void selectionSort()
+void selectionSort(int values[], int size)
 {
-    int minimal_value_id;
-    int n = sizeof(matrix) / sizeof(matrix[0]);
+    int minimalValueId;
 
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0; i < size - 1; i++)
     {
-        minimal_value_id = i;
+        minimalValueId = i;
 
-        for (int j = i + 1; j < n; j++)
+        for (int j = i + 1; j < size; j++)
         {
-            if (matrix[j] < matrix[minimal_value_id])
+            if (values[j] < values[minimalValueId])
             {
-                minimal_value_id = j;
+                minimalValueId = j;
             }
         }
 
-        swap(&matrix[minimal_value_id], &matrix[i]);
+        swap(&values[minimalValueId], &values[i]);
     }
 }
 
-// Saves user input matrix and array of diagonal values
-void askMatrixInput()
+int main(void)
 {
+    int diagonalValues[MATRIX_SIZE];
+    int matrix[MATRIX_SIZE][MATRIX_SIZE];
+
+    // Matrix input
     for (int i = 0; i < MATRIX_SIZE; i++)
     {
         for (int j = 0; j < MATRIX_SIZE; j++)
@@ -51,24 +50,14 @@ void askMatrixInput()
             }
         }
     }
-}
 
-void outputDiagonalValues()
-{
-    printf("\nResults: \n");
+    selectionSort(diagonalValues, sizeof(diagonalValues) / sizeof(diagonalValues[0]));
 
     // The size of matrix correlates with amount of diagonal elements
     for (int i = 0; i < MATRIX_SIZE; i++)
     {
-        printf("%d ", diagonalValues[i]);
+        matrix[i][i] = diagonalValues[i];
     }
-}
-
-int main(void)
-{
-    askMatrixInput();
-    selectionSort();
-    outputDiagonalValues();
 
     return 0;
 }

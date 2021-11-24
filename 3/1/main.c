@@ -15,7 +15,7 @@ int main(void)
         return 1;
     }
 
-    unsigned int vector[argsNum], formattedVector[argsNum / 2];
+    unsigned int vector[argsNum], formattedVector[argsNum - 1];
     unsigned int index = 0;
 
     for (int i = 0; i < argsNum; i++)

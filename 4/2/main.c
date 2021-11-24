@@ -41,14 +41,13 @@ void readParametersFromFile(char filename[FILENAME_LENGTH], struct Record *recor
     fclose(file);
 }
 
-void logToFile(const char *text, ...)
+void logToFile(const char *format, ...)
 {
-    va_list args;
-    va_start(args, text);
-
     char *formattedString;
-    vasprintf(&formattedString, text, args);
+    va_list args;
 
+    va_start(args, format);
+    vasprintf(&formattedString, format, args);
     va_end(args);
 
     time_t t = time(NULL);
@@ -59,7 +58,7 @@ void logToFile(const char *text, ...)
 
     FILE *file = fopen(LOG_FILENAME, "a");
 
-    fprintf(file, "[%s] %s\n", timePrefix, text);
+    fprintf(file, "[%s] %s\n", timePrefix, formattedString);
     fclose(file);
 }
 
