@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-static const EXCLUDE_NUMBER = 7;
+static const int EXCLUDE_NUMBER = 7;
 
 unsigned short numberIncludes(int includes, int number)
 {
