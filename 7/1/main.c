@@ -1,42 +1,40 @@
+#include <stdio.h>
+#include <time.h>
+
 #include "sorting.h"
+#include "utils.h"
 
-#include <stdlib.h>
+// перевірку впорядкованості елементів масиву
+// перевірку ідентичності масивів до і після сортування
+// за допомогою стандартної функції time, оцінити час виконання реалізованих алгоритмів сортування
 
-static const DEFAULT_ELEMENTS_COUNT = 1e5;
+int main(void) {
+    long elementsNumber;
 
-void fillArray(int elementsCount, int *array[])
-{
-    for (int i = 0; i < elementsCount; i++)
-    {
-        *array[i] = rand();
-    }
-}
+    printf("Enter the number of array elements: ");
+    scanf("%ld", &elementsNumber);
 
-void insertionSort(int n, int mass[])
-{
-    int newElement, location;
- 
-    for (int i = 1; i < n; i++)
-    {
-        newElement = mass[i];
-        location = i - 1;
+    long arr1[elementsNumber], arr2[elementsNumber];
 
-        while(location >= 0 && mass[location] > newElement)
-        {
-            mass[location+1] = mass[location];
-            location = location - 1;
-        }
-        
-        mass[location+1] = newElement;
-    }
-}
+    fillArraysWithRandomItems(elementsNumber, arr1, arr2);
 
-int main(void)
-{
-    int arr1[], arr2[];
+    puts("\nBefore sorting");
+    printf("Unique: %lu\n", areSame(elementsNumber, arr1, arr2));
 
-    fillArray(DEFAULT_ELEMENTS_COUNT, &arr1);
-    fillArray(DEFAULT_ELEMENTS_COUNT, &arr2);
+    time_t method1Begin = time(NULL);
+    insertionSort(elementsNumber, arr1);
+    time_t method1End = time(NULL);
+
+    time_t method2Begin = time(NULL);
+    qsSort(arr2, 0, elementsNumber);
+    time_t method2End = time(NULL);
+
+    puts("\nAfter sorting");
+
+    printf("Unique: %lu\n", areSame(elementsNumber, arr1, arr2));
+
+    printf("\nMethod 1 took %ld seconds to execute\n", (method1End - method1Begin));
+    printf("Method 2 took %ld seconds to execute\n", (method2End - method2Begin));
 
     return 0;
 }

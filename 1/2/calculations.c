@@ -1,5 +1,5 @@
 #include <math.h>
-#include "calculation.h"
+#include "calculations.h"
 
 double calculateWithFormula(struct Record record)
 {

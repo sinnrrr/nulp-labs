@@ -2,7 +2,7 @@
 
 readonly MAIN_FILE_NAME="main.c"
 readonly OUTPUT_FILE_NAME="a.out"
-readonly LINK_FILE_NAME="calculation.c"
+readonly LINK_FILE_NAME="calculations.c"
 
 function clean() {
     rm $OUTPUT_FILE_NAME
@@ -29,4 +29,4 @@ elif [[ -d $2 ]]; then
     calculations="$2/$LINK_FILE_NAME"
 fi
 
-clang $filepath $calculations -Wall -o $OUTPUT_FILE_NAME && chmod +x $OUTPUT_FILE_NAME && ./$OUTPUT_FILE_NAME
+clang $filepath $calculations -Wall -Wextra -Wpedantic -o $OUTPUT_FILE_NAME && chmod +x $OUTPUT_FILE_NAME && ./$OUTPUT_FILE_NAME

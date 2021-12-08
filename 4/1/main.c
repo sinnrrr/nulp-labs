@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+// Старший викладач
+
 int main(void)
 {
     char sentence[1024], word[64], result[1024];
@@ -18,14 +20,7 @@ int main(void)
     while (token != NULL)
     {
         // Using printf to avoid g_strjoin function usage
-        if (i == 4 - 1)
-        {
-            printf("%s ", word);
-        }
-        else
-        {
-            printf("%s ", token);
-        }
+        printf("%s ", i == 4 - 1 ? word : token);
 
         token = strtok(NULL, " ");
         i++;

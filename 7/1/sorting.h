@@ -1,3 +1,5 @@
-extern void swap(int array[], long pos1, long pos2);
+extern void swap(long array[], long pos1, long pos2);
 
-extern void qs_sort(int array[], long start, long end);
+extern void qsSort(long array[], long start, long end);
+
+extern void insertionSort(long n, long mass[]);

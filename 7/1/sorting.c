@@ -1,50 +1,43 @@
-void swap(int array[], long pos1, long pos2)
-{
+void swap(long array[], long pos1, long pos2) {
     long tmp;
     tmp = array[pos1];
     array[pos1] = array[pos2];
     array[pos2] = tmp;
 }
 
-void qs_sort(int array[], long start, long end)
-{
-    long head = start, tail = end - 1, tmp;
+void qsSort(long array[], long start, long end) {
+    long head = start, tail = end - 1;
     long diff = end - start;
-    long pe_index;
+    long peIndex;
     // якщо залишилося менше двох елементів – кінець рекурсії
     if (diff < 1)
         return;
     if (diff == 1)
-        if (array[start] > array[end])
-        {
+        if (array[start] > array[end]) {
             swap(array, start, end);
             return;
         }
-    // пошук індексу розділяючого елементу pe_index
+    // пошук індексу розділяючого елементу peIndex
     long m = (start + end) / 2;
-    if (array[start] <= array[m])
-    {
+    if (array[start] <= array[m]) {
         if (array[m] <= array[end])
-            pe_index = m;
+            peIndex = m;
         else if (array[end] <= array[start])
-            pe_index = start;
+            peIndex = start;
         else
-            pe_index = end;
-    }
-    else
-    {
+            peIndex = end;
+    } else {
         if (array[start] <= array[end])
-            pe_index = start;
+            peIndex = start;
         else if (array[end] <= array[m])
-            pe_index = m;
+            peIndex = m;
         else
-            pe_index = end;
+            peIndex = end;
     }
-    long pe = array[pe_index]; // сам розділяючий елемент
-    swap(array, pe_index, end);
+    long pe = array[peIndex]; // сам розділяючий елемент
+    swap(array, peIndex, end);
 
-    while (1)
-    {
+    while (1) {
         while (array[head] < pe)
             ++head;
         while (array[tail] > pe && tail > start)
@@ -55,6 +48,22 @@ void qs_sort(int array[], long start, long end)
     }
     swap(array, head, end);
     long mid = head;
-    qs_sort(array, start, mid - 1); // рекурсивний виклик для 1-ої підмножини
-    qs_sort(array, mid + 1, end);   // рекурсивний виклик для 2-ої підмножини
+    qsSort(array, start, mid - 1); // рекурсивний виклик для 1-ої підмножини
+    qsSort(array, mid + 1, end);   // рекурсивний виклик для 2-ої підмножини
+}
+
+void insertionSort(long n, long mass[]) {
+    long newElement, location;
+
+    for (long i = 1; i < n; i++) {
+        newElement = mass[i];
+        location = i - 1;
+
+        while (location >= 0 && mass[location] > newElement) {
+            mass[location + 1] = mass[location];
+            location = location - 1;
+        }
+
+        mass[location + 1] = newElement;
+    }
 }

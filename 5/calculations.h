@@ -1,3 +1,5 @@
 extern double calculateArgument(double x);
 
-extern void tabulate(double x, double y);
+extern short argumentRange(double x, double *y);
+
+extern void tabulate(double start, double end, double step);

@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-#include "../../1/2/calculation.h"
+#include "../../1/2/calculations.h"
 
 static const int FILENAME_LENGTH = 64;
 static const char *LOG_FILENAME = "data.log";
@@ -33,12 +33,19 @@ void writeParametersToFile(char filename[FILENAME_LENGTH], struct Record record)
     fclose(file);
 }
 
-void readParametersFromFile(char filename[FILENAME_LENGTH], struct Record *record)
+int readParametersFromFile(char filename[FILENAME_LENGTH], struct Record *record)
 {
     FILE *file = fopen(filename, "r");
 
+    if (file == NULL)
+    {
+        return 1;
+    }
+
     fread(record, sizeof(struct Record), 1, file);
     fclose(file);
+
+    return 0;
 }
 
 void logToFile(const char *format, ...)
@@ -76,8 +83,12 @@ int main(void)
 
     if (access(paramsFilename, F_OK) == 0)
     {
-        readParametersFromFile(paramsFilename, &record);
-        logToFile("Parameters file \"%s\" opened. X=%lf, Y=%lf, U=%lf.", paramsFilename, &record.x, &record.y, &record.u);
+        if (!readParametersFromFile(paramsFilename, &record))
+        {
+            puts("Failed opening parameters file.");
+        }
+
+        logToFile("Parameters file \"%s\" opened. X=%lf, Y=%lf, U=%lf.", paramsFilename, record.x, record.y, record.u);
     }
     else
     {
@@ -85,6 +96,7 @@ int main(void)
         scanf("%lf %lf %lf", &record.x, &record.y, &record.u);
 
         writeParametersToFile(paramsFilename, record);
+        logToFile("Parameters file \"%s\" opened. X=%lf, Y=%lf, U=%lf.", paramsFilename, record.x, record.y, record.u);
     }
 
     printf("Enter result filename (max 63 characters): ");

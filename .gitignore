@@ -9,3 +9,6 @@
 
 # Unignore all dirs
 !*/
+
+# Stuff
+/cmake-build-debug
