@@ -51,29 +51,10 @@ struct Book parseToBook(char *buffer, char *delimiter)
     return book;
 }
 
-void swap(struct Book *xp, struct Book *yp)
+int comparator(const void *a, const void *b)
 {
-    struct Book temp = *xp;
+    struct Book *book1 = (struct Book *)a;
+    struct Book *book2 = (struct Book *)b;
 
-    *xp = *yp;
-    *yp = temp;
-}
-
-void selectionSort(struct Book values[], int size)
-{
-    int minimalValueId;
-    for (int i = 0; i < size - 1; i++)
-    {
-        minimalValueId = i;
-
-        for (int j = i + 1; j < size; j++)
-        {
-            if (values[j].price > values[minimalValueId].price)
-            {
-                minimalValueId = j;
-            }
-        }
-
-        swap(&values[minimalValueId], &values[i]);
-    }
+    return book2->price - book1->price;
 }

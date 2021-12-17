@@ -2,10 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "utils.h"
+#include "../8/book.h"
+#include "../8/utils.h"
 
 #define DELIMITER "|"
 #define BUFFER_LENGTH 255
+
+struct Node
+{
+    struct Book data[BUFFER_LENGTH];
+    struct Node *next;
+};
 
 int main(void)
 {
@@ -17,10 +24,11 @@ int main(void)
         return 1;
     }
 
-    struct Book books[BUFFER_LENGTH];
+    struct Node list[BUFFER_LENGTH];
     char buffer[BUFFER_LENGTH];
 
     int linesCount = 0;
+    struct Node* previousNode = NULL;
     for (; fgets(buffer, BUFFER_LENGTH, fp); linesCount++)
     {
         char *newline = strchr(buffer, '\n');
@@ -29,18 +37,12 @@ int main(void)
             *newline = 0;
         }
 
-        books[linesCount] = parseToBook(buffer, DELIMITER);
+        struct Node currentNode = { parseToBook(buffer, DELIMITER) };
+        list[linesCount] = currentNode;
+        list[linesCount - 1].next = &currentNode;
     }
 
     fclose(fp);
 
-    qsort(books, sizeof(books) / sizeof(books[0]), sizeof(books[0]), comparator);
-
-    puts("Result:");
-    for (int i = 0; i < linesCount; i++)
-    {
-        printf("%s %s %d %d %f\n", books[i].author, books[i].name, books[i].publicationYear, books[i].pagesCount, books[i].price);
-    }
-
-    return 0;
+    selectionSort(books, linesCount);
 }
