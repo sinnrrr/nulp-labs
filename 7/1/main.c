@@ -4,11 +4,8 @@
 #include "sorting.h"
 #include "utils.h"
 
-// перевірку впорядкованості елементів масиву
-// перевірку ідентичності масивів до і після сортування
-// за допомогою стандартної функції time, оцінити час виконання реалізованих алгоритмів сортування
-
-int main(void) {
+int main(void)
+{
     long elementsNumber;
 
     printf("Enter the number of array elements: ");
@@ -19,6 +16,10 @@ int main(void) {
     fillArraysWithRandomItems(elementsNumber, arr1, arr2);
 
     puts("\nBefore sorting");
+
+    printf("Array1 is ordered: %d\n", arrayIsOrdered(elementsNumber, arr1));
+    printf("Array2 is ordered: %d\n", arrayIsOrdered(elementsNumber, arr2));
+
     printf("Unique: %lu\n", areSame(elementsNumber, arr1, arr2));
 
     time_t method1Begin = time(NULL);
@@ -30,6 +31,9 @@ int main(void) {
     time_t method2End = time(NULL);
 
     puts("\nAfter sorting");
+
+    printf("Array1 is ordered: %d\n", arrayIsOrdered(elementsNumber, arr1));
+    printf("Array2 is ordered: %d\n", arrayIsOrdered(elementsNumber, arr2));
 
     printf("Unique: %lu\n", areSame(elementsNumber, arr1, arr2));
 

@@ -1,35 +1,15 @@
 #include <stdio.h>
 
-int productOfNumberDigits(int number)
-{
-    int product = 1, rem;
-
-    while (number != 0)
-    {
-        rem = number % 10;
-        product *= rem;
-        number /= 10;
-    }
-
-    return product;
-}
+#define PRODUCT_OF_NUMBER_DIGITS(number) (number % 10 + (number / 10) % 100 + (number / 100) % 1000)
 
 int main(void)
 {
-    int inputNumber, result = 0;
+    int number;
 
     printf("Enter number: ");
-    scanf("%d", &inputNumber);
+    scanf("%d", &number);
 
-    for (int i = 10; result == 0; i++)
-    {
-        if (productOfNumberDigits(i) == inputNumber)
-        {
-            result = i;
-        }
-    }
-
-    printf("Result: %d", result);
+    printf("Result: %d", PRODUCT_OF_NUMBER_DIGITS(number));
 
     return 0;
 }

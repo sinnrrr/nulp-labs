@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-char *asd[];
-
 void fillArraysWithRandomItems(long size, long arr1[], long arr2[])
 {
     srand(time(NULL));
@@ -37,7 +35,7 @@ long areSame(const long size, const long arr1[], const long arr2[])
     return sameItemsCount == size;
 }
 
-long arrayIsOrdered(const long size, const long arr[])
+int arrayIsOrdered(const long size, const long arr[])
 {
     for (long i = 1; i < size; ++i)
     {

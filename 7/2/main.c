@@ -47,13 +47,13 @@ int main(void) {
     printf("Enter method to use: ");
     scanf("%d", &methodToUse);
 
-    if (methodToUse > methodsAvailableCount) {
+    if (methodToUse < 0 || methodToUse > methodsAvailableCount) {
         puts("We have any definition of that method number!");
 
         return 1;
     }
 
-    functions[methodToUse](start, step,  end);
+    functions[methodToUse](start, step, end);
 
     return 0;
 }

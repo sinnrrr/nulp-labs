@@ -8,7 +8,7 @@ int main(void)
     printf("Enter size of square matrix: ");
     scanf("%d", &size);
 
-    int **matrix = (int *)calloc(size, 1 + sizeof(int *));
+    int **matrix = (int *)calloc(size, sizeof(int *));
     if (matrix == NULL)
     {
         puts("Memory for rows is not allocated");
@@ -40,6 +40,9 @@ int main(void)
     int maxSum = 0, maxSumColumnIndex;
 
     // starting from second column
+    // 1 2 3
+    // 1 2 3
+    // 1 2 3
     for (int column = 1; column < size; column++)
     {
         int currentSum = 0;
@@ -56,6 +59,13 @@ int main(void)
             }
         }
     }
+
+    for (int i = 0; matrix[i] != NULL; i++)
+    {
+        free(matrix[i]);
+    }
+
+    free(matrix);
 
     printf("Max sum column index: %d\n", maxSumColumnIndex);
 
