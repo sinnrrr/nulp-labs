@@ -17,25 +17,30 @@ int main(void)
         return 1;
     }
 
-    const int fileLinesCount = countFileLines(fp);
-    struct Book books[fileLinesCount];
+    struct Book books[BUFFER_LENGTH];
     char buffer[BUFFER_LENGTH];
 
-    for (int i = 0; i < fileLinesCount; i++)
+    int linesCount = 0;
+    for (; fgets(buffer, BUFFER_LENGTH, fp); linesCount++)
     {
-        fgets(buffer, BUFFER_LENGTH, fp);
-        printf("%s\n", buffer);
-
         char *newline = strchr(buffer, '\n');
         if (newline)
         {
             *newline = 0;
         }
 
-        books[i] = parseToBook(buffer, DELIMITER);
+        books[linesCount] = parseToBook(buffer, DELIMITER);
     }
 
     fclose(fp);
+
+    selectionSort(books, linesCount);
+
+    puts("Result:");
+    for (int i = 0; i < linesCount; i++)
+    {
+        printf("%s %s %d %d %f\n", books[i].author, books[i].name, books[i].publicationYear, books[i].pagesCount, books[i].price);
+    }
 
     return 0;
 }

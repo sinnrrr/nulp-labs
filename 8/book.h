@@ -1,8 +1,8 @@
 struct Book
 {
-    char *author;
-    char *name;
+    char author[255];
+    char name[255];
     int publicationYear;
     int pagesCount;
-    int price;
+    double price;
 };

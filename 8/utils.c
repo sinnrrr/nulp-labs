@@ -29,24 +29,19 @@ struct Book parseToBook(char *buffer, char *delimiter)
         switch (i)
         {
         case 0:
-            printf("Author: %s", token);
-            book.author = token;
+            strcpy(book.author, token);
             break;
         case 1:
-            printf("Name: %s", token);
-            book.name = token;
+            strcpy(book.name, token);
             break;
         case 2:
-            printf("Pubyear: %s", token);
             book.publicationYear = atoi(token);
             break;
         case 3:
-            printf("Pages: %s", token);
             book.pagesCount = atoi(token);
             break;
         case 4:
-            printf("Price: %s", token);
-            book.price = atoi(token);
+            book.price = atof(token);
             break;
         }
 
@@ -54,4 +49,31 @@ struct Book parseToBook(char *buffer, char *delimiter)
     }
 
     return book;
+}
+
+void swap(struct Book *xp, struct Book *yp)
+{
+    struct Book temp = *xp;
+
+    *xp = *yp;
+    *yp = temp;
+}
+
+void selectionSort(struct Book values[], int size)
+{
+    int minimalValueId;
+    for (int i = 0; i < size - 1; i++)
+    {
+        minimalValueId = i;
+
+        for (int j = i + 1; j < size; j++)
+        {
+            if (values[j].price > values[minimalValueId].price)
+            {
+                minimalValueId = j;
+            }
+        }
+
+        swap(&values[minimalValueId], &values[i]);
+    }
 }
