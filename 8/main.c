@@ -7,6 +7,14 @@
 #define DELIMITER "|"
 #define BUFFER_LENGTH 255
 
+int comparator(const void *a, const void *b)
+{
+    struct Book *book1 = (struct Book *)a;
+    struct Book *book2 = (struct Book *)b;
+
+    return book2->price - book1->price;
+}
+
 int main(void)
 {
     FILE *fp = fopen("input.txt", "r");
@@ -34,12 +42,22 @@ int main(void)
 
     fclose(fp);
 
-    qsort(books, sizeof(books) / sizeof(books[0]), sizeof(books[0]), comparator);
+    struct Book filteredBooks[linesCount];
+    int i = 0, filteredBooksCount = 0;
+    for (; i < linesCount; i++)
+    {
+        if (books[i].publicationYear < 1975)
+        {
+            filteredBooks[filteredBooksCount++] = books[i];
+        }
+    }
+
+    qsort(filteredBooks, sizeof(filteredBooks) / sizeof(filteredBooks[0]), sizeof(filteredBooks[0]), comparator);
 
     puts("Result:");
-    for (int i = 0; i < linesCount; i++)
+    for (int i = 0; i < filteredBooksCount; i++)
     {
-        printf("%s %s %d %d %f\n", books[i].author, books[i].name, books[i].publicationYear, books[i].pagesCount, books[i].price);
+        printf("%s %s %d %d %f\n", filteredBooks[i].author, filteredBooks[i].name, filteredBooks[i].publicationYear, filteredBooks[i].pagesCount, filteredBooks[i].price);
     }
 
     return 0;

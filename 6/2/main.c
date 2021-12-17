@@ -42,6 +42,7 @@ void outputOddAndWhitlistedNumbers(int size, ...)
 int main(void)
 {
     int NUMBERS_PROVIDED = 4;
+    
     outputOddAndWhitlistedNumbers(NUMBERS_PROVIDED, 47, 5, 4, -1);
 
     return 0;

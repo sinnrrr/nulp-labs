@@ -50,11 +50,3 @@ struct Book parseToBook(char *buffer, char *delimiter)
 
     return book;
 }
-
-int comparator(const void *a, const void *b)
-{
-    struct Book *book1 = (struct Book *)a;
-    struct Book *book2 = (struct Book *)b;
-
-    return book2->price - book1->price;
-}
