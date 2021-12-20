@@ -2,15 +2,31 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "main.h"
 #include "utils.h"
 
 #define DELIMITER "|"
 #define BUFFER_LENGTH 255
 
+int countFileLines(FILE *fp)
+{
+    int lines = 0, ch = 0;
+    while (!feof(fp))
+    {
+        ch = fgetc(fp);
+        if (ch == '\n')
+        {
+            lines++;
+        }
+    }
+
+    return lines;
+}
+
 int comparator(const void *a, const void *b)
 {
-    struct Book *book1 = (struct Book *)a;
-    struct Book *book2 = (struct Book *)b;
+    Book *book1 = (Book *)a;
+    Book *book2 = (Book *)b;
 
     return book2->price - book1->price;
 }
@@ -25,7 +41,7 @@ int main(void)
         return 1;
     }
 
-    struct Book books[BUFFER_LENGTH];
+    Book books[BUFFER_LENGTH];
     char buffer[BUFFER_LENGTH];
 
     int linesCount = 0;
@@ -37,12 +53,12 @@ int main(void)
             *newline = 0;
         }
 
-        books[linesCount] = parseToBook(buffer, DELIMITER);
+        parseToBook(&books[linesCount], buffer, DELIMITER);
     }
 
     fclose(fp);
 
-    struct Book filteredBooks[linesCount];
+    Book filteredBooks[linesCount];
     int i = 0, filteredBooksCount = 0;
     for (; i < linesCount; i++)
     {
