@@ -1,12 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "utils.h"
 
 int comparator(const Node *node1, const Node *node2)
 {
     return node1->data.price - node2->data.price;
+}
+
+int matcher(const Node *node) 
+{
+    return node->data.publicationYear < (CURRENT_YEAR - YEARS_BEFORE);
 }
 
 void readStudentsFromFile(Node **head)
@@ -49,8 +55,15 @@ int main(void)
 {
     Node *head = NULL;
 
+    puts("Before:");
     readStudentsFromFile(&head);
     outputLinkedList(head);
+    printf("\n");
+
+    puts("After:");
+    deleteAllMatching(&head, matcher);
+    outputLinkedList(head);
+    printf("\n");
 
     return 0;
 }

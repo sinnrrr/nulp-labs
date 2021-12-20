@@ -7,4 +7,4 @@ extern void outputLinkedList(Node *head);
 
 extern void sortedInsert(Node **head, Node *newNode, int (*comparator)(const Node *, const Node *));
 
-extern Node *newNode(Book data);
+extern void deleteAllMatching(Node **head, int (*matcher)(const Node *));
