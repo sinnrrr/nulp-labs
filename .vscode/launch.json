@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [
+        ""
+      ],
+      "stopAtEntry": true,
+      "cwd": "/Users/dmytro/Work/university/labs/10",
+      "environment": [],
+      "program": "/Users/dmytro/Work/university/labs/10/build/Debug/outDebug",
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "lldb",
+      "externalConsole": false
+    }
+  ]
+}
