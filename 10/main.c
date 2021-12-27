@@ -10,9 +10,14 @@ int comparator(const Node *node1, const Node *node2)
     return node1->data.price - node2->data.price;
 }
 
-int matcher(const Node *node) 
+int deleteMatcher(const Node *node)
 {
     return node->data.publicationYear < (CURRENT_YEAR - YEARS_BEFORE);
+}
+
+int insertMatcher(const Node *node)
+{
+    return node->data.publicationYear > 1975;
 }
 
 void readStudentsFromFile(Node **head)
@@ -39,11 +44,11 @@ void readStudentsFromFile(Node **head)
         // Parse string to Book struct
         parseToBook(&temp->data, buffer, DELIMITER);
 
-        // Filtering conditionals
-        if (temp->data.publicationYear > 1975)
-        {
-            continue;
-        }
+        //// Filtering conditionals
+        // if (insertMatcher(temp))
+        // {
+        //     continue;
+        // }
 
         sortedInsert(head, temp, comparator);
     }
@@ -61,7 +66,7 @@ int main(void)
     printf("\n");
 
     puts("After:");
-    deleteAllMatching(&head, matcher);
+    deleteAllMatching(&head, deleteMatcher);
     outputLinkedList(head);
     printf("\n");
 

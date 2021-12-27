@@ -39,7 +39,12 @@ void outputLinkedList(Node *iterator)
     {
         printf("%s %s %d %d %f\n", iterator->data.author, iterator->data.name, iterator->data.publicationYear, iterator->data.pagesCount, iterator->data.price);
 
-        iterator = iterator->next;
+        Node *temp = iterator->next;
+        free(iterator);
+
+        iterator = temp;
+
+        free(temp);
     }
 }
 
