@@ -3,3 +3,4 @@
 
 .qmake.stash
 Makefile
+compile-commands.json
