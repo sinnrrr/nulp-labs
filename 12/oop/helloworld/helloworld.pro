@@ -6,8 +6,6 @@ TEMPLATE = app
 TARGET = helloworld
 INCLUDEPATH += .
 
-QT += widgets
-
 # You can make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
 # Please consult the documentation of the deprecated API in order to know
@@ -18,6 +16,9 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 # Input
 HEADERS += source/mainwidget.h
 SOURCES += source/main.cpp source/mainwidget.cpp
+
+# Include QT declarations
+QT += widgets
 
 # Output
 DESTDIR = build
