@@ -1,0 +1,6 @@
+/build
+/.cache
+
+.qmake.stash
+Makefile
+compile-commands.json
