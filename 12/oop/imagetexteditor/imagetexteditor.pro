@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = calculator
+TARGET = imagetexteditor
 INCLUDEPATH += .
 
 # You can make your code fail to compile if you use deprecated APIs.
@@ -14,8 +14,15 @@ INCLUDEPATH += .
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += source/calculator.h source/button.h
-SOURCES += source/main.cpp source/calculator.cpp source/button.cpp
+SOURCES += \
+    source/main.cpp \
+    source/mainwindow.cpp
+
+HEADERS += \
+    source/mainwindow.h
+
+FORMS += \
+    source/mainwindow.ui
 
 # Include QT declarations
 QT += widgets
