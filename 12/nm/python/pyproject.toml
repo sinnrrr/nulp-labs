@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "labs"
+version = "0.1.0"
+description = ""
+authors = ["Dmytro <dimasoltusyuk@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+sympy = "^1.10.1"
+colorama = "^0.4.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

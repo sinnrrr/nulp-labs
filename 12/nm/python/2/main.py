@@ -26,13 +26,14 @@ if __name__ == "__main__":
     eps_default = str(0.0001)
 
     a = float(
-        input(f"Please, enter point A value (default: {a_default}): ") or a_default
-    )
-    b = float(input(f"Now, enter point B value (default: {b_default}): ") or b_default)
+        input(f"Please, enter point A value (default: {a_default}): ")
+        or a_default)
+    b = float(
+        input(f"Now, enter point B value (default: {b_default}): ")
+        or b_default)
     eps = float(
         input(f"Its time for EPS value to roll in (default: {eps_default}): ")
-        or eps_default
-    )
+        or eps_default)
 
     y = Pow(x, 3) - 3 * Pow(x, 2) + 6 * x - 8
     y_prime = y.diff(x)
@@ -64,11 +65,9 @@ if __name__ == "__main__":
 
     x0 = select_boundpoint()
 
-    print(
-        f"""
+    print(f"""
 Results
 
 Newtons method: {whatever(newton_iterator, x0, eps)}
 Simple itertaions method: {whatever(simple_iterator, x0, eps)}
-    """
-    )
+    """)
