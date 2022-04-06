@@ -58,7 +58,7 @@ def multiply_2d_to_1d_matrices(m2d, m1d) -> MethodComputationResult:
             "One of the matrices is not eligible for multiplication")
 
     width = m1d_length
-    result: list[float] = [0 for _ in range(width)]
+    result: MethodComputationResult = [0 for _ in range(width)]
 
     for i in range(m2d_length):
         for j in range(len(m2d[0])):
@@ -123,7 +123,7 @@ def run():
     if not matrix_is_square(matrix):
         raise ValueError("Please, provide valid square matrix")
 
-    def method_result_description(title: str, result: list[float]):
+    def method_result_description(title: str, result: MethodComputationResult):
         return textwrap.dedent(f"""
         {Fore.CYAN}{title}{Style.RESET_ALL}
         {Fore.RED}Result:{Style.RESET_ALL} {result}
@@ -134,7 +134,3 @@ def run():
 
     for j, k in output:
         print(method_result_description(j, k))
-
-
-if __name__ == "__main__":
-    run()
