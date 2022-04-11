@@ -134,3 +134,7 @@ def run():
 
     for j, k in output:
         print(method_result_description(j, k))
+
+
+if __name__ == "__main__":
+    run()

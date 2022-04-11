@@ -61,7 +61,7 @@ private:
 
   int snakeLength;
 
-  int gameSpeed = 3;
+  int gameSpeed = 5;
 
   tiletype getTileTypeInFront();
 
