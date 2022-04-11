@@ -73,8 +73,11 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
   this->perimeter = new QLineEdit;
   this->perimeter->setReadOnly(true);
 
-  this->angles = new QTextEdit("Angles");
-  this->heights = new QTextEdit("Heights");
+  this->angles = new QTextEdit;
+  this->angles->setReadOnly(true);
+
+  this->heights = new QTextEdit;
+  this->heights->setReadOnly(true);
 
   this->confirmInput = new QPushButton("Enter");
   this->confirmIncrease = new QPushButton("Increase");
