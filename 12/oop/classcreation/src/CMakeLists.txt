@@ -50,7 +50,7 @@ set(
   widget.h
 )
 
-list(TRANSFORM PROJECT_SOURCES PREPEND "src/")
+# list(TRANSFORM PROJECT_SOURCES PREPEND "src/")
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(

@@ -1,6 +1,6 @@
 #include "widget.h"
-#include "src/triangleangles.h"
 #include "triangle.h"
+#include "triangleangles.h"
 #include "trianglesides.h"
 
 #include <QGridLayout>
