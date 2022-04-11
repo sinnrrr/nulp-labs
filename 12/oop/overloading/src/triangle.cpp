@@ -52,17 +52,11 @@ double Triangle::area() {
 TriangleAngles Triangle::angles() {
   TriangleAngles angles;
 
-  angles.abc =
-      acos((pow(this->sides.b, 2) + pow(this->sides.c, 2) -
-            pow(this->sides.a, 2) / 2 * this->sides.b * this->sides.c));
+  const double area = this->area();
 
-  angles.bca =
-      acos((pow(this->sides.a, 2) + pow(this->sides.c, 2) -
-            pow(this->sides.b, 2) / 2 * this->sides.a * this->sides.c));
-
-  angles.cab =
-      acos((pow(this->sides.a, 2) + pow(this->sides.b, 2) -
-            pow(this->sides.c, 2) / 2 * this->sides.a * this->sides.b));
+  angles.abc = asin(2 * area / this->sides.a * this->sides.b) * (180 / M_PI);
+  angles.bca = asin(2 * area / this->sides.b * this->sides.c) * (180 / M_PI);
+  angles.cab = asin(2 * area / this->sides.a * this->sides.c) * (180 / M_PI);
 
   return angles;
 }
