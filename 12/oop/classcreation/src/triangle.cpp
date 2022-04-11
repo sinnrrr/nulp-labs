@@ -45,11 +45,14 @@ double Triangle::area() {
 TriangleAngles Triangle::angles() {
   TriangleAngles angles;
 
-  const double area = this->area();
+  const auto angleFinder = [](const double a, const double b, const double c) {
+    return (180. / M_PI) *
+           acos((pow(a, 2) + pow(b, 2) - pow(c, 2)) / (2 * a * b));
+  };
 
-  angles.abc = asin(2 * area / this->sides.a * this->sides.b) * (180 / M_PI);
-  angles.bca = asin(2 * area / this->sides.b * this->sides.c) * (180 / M_PI);
-  angles.cab = asin(2 * area / this->sides.a * this->sides.c) * (180 / M_PI);
+  angles.cab = angleFinder(this->sides.a, this->sides.b, this->sides.c);
+  angles.abc = angleFinder(this->sides.a, this->sides.c, this->sides.b);
+  angles.bca = angleFinder(this->sides.b, this->sides.c, this->sides.a);
 
   return angles;
 }
