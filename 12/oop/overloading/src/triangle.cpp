@@ -115,15 +115,17 @@ Triangle::operator double() { return this->area(); }
 //
 const int TRIANGLE_SIDES_COUNT = 3;
 
-void operator<<(QLineEdit *out[TRIANGLE_SIDES_COUNT], Triangle &triangle) {
-  for (int i = 0; i < 3; i++) {
-    out[i]->setText(QString::number(*triangle.sidesMap[i]));
-  }
+void operator<<(QLineEdit *out[TRIANGLE_SIDES_COUNT], TriangleSides &sides) {
+  out[0]->setText(QString::number(sides.a));
+  out[1]->setText(QString::number(sides.b));
+  out[2]->setText(QString::number(sides.c));
 };
 
-void operator>>(QLineEdit *in[TRIANGLE_SIDES_COUNT], Triangle &triangle) {
-  for (int i = 0; i < 3; i++) {
-    *triangle.sidesMap[i] = in[i]->text().toDouble();
+void operator>>(QLineEdit *in[3], TriangleSides &sides) {
+  double *sidesMap[TRIANGLE_SIDES_COUNT] = {&sides.a, &sides.b, &sides.c};
+
+  for (int i = 0; i < TRIANGLE_SIDES_COUNT; i++) {
+    *sidesMap[i] = in[i]->text().toDouble();
   }
 };
 

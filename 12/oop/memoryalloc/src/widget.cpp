@@ -8,23 +8,18 @@
 
 void Widget::onInputConfirm() {
   TriangleSides sides;
-  QLineEdit *sideInputs[3] = {this->side_a, this->side_b, this->side_c};
 
-  sideInputs >> sides;
+  sides.a = this->side_a->text().toDouble();
+  sides.b = this->side_b->text().toDouble();
+  sides.c = this->side_c->text().toDouble();
 
   this->triangle = new Triangle(sides);
 
   emit valueChanged(this->triangle);
 }
 
-void Widget::onInputIncreaseBy() {
-  *this->triangle + this->increaseSidesBy->text().toDouble();
-
-  emit valueChanged(this->triangle);
-}
-
-void Widget::onInputIncreaseTimes() {
-  (*this->triangle) * (this->increaseSidesTimes->text().toDouble());
+void Widget::onInputIncrease() {
+  this->triangle->increaseSidesBy(this->increaseSidesBy->text().toDouble());
 
   emit valueChanged(this->triangle);
 }
@@ -68,7 +63,6 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
   this->side_c->setPlaceholderText("Side C length");
 
   this->increaseSidesBy = new QLineEdit;
-  this->increaseSidesTimes = new QLineEdit;
 
   this->isRectangular = new QLineEdit;
   this->isRectangular->setReadOnly(true);
@@ -86,8 +80,7 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
   this->heights->setReadOnly(true);
 
   this->confirmInput = new QPushButton("Enter");
-  this->confirmIncreaseBy = new QPushButton("Increase by");
-  this->confirmIncreaseTimes = new QPushButton("Increase times");
+  this->confirmIncrease = new QPushButton("Increase");
 
   mainLayout->addWidget(this->side_a, 0, 0);
   mainLayout->addWidget(this->side_b, 0, 1);
@@ -96,35 +89,28 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
 
   mainLayout->addWidget(new QLabel("Increase sides by:"), 2, 0);
   mainLayout->addWidget(this->increaseSidesBy, 2, 1);
-  mainLayout->addWidget(this->confirmIncreaseBy, 2, 2);
+  mainLayout->addWidget(this->confirmIncrease, 2, 2);
 
-  mainLayout->addWidget(new QLabel("Increase sides times:"), 3, 0);
-  mainLayout->addWidget(this->increaseSidesTimes, 3, 1);
-  mainLayout->addWidget(this->confirmIncreaseTimes, 3, 2);
+  mainLayout->addWidget(new QLabel("Is rectangular:"), 3, 0);
+  mainLayout->addWidget(this->isRectangular, 3, 1, 1, 2);
 
-  mainLayout->addWidget(new QLabel("Is rectangular:"), 4, 0);
-  mainLayout->addWidget(this->isRectangular, 4, 1, 1, 2);
+  mainLayout->addWidget(new QLabel("Area:"), 4, 0);
+  mainLayout->addWidget(this->area, 4, 1, 1, 2);
 
-  mainLayout->addWidget(new QLabel("Area:"), 5, 0);
-  mainLayout->addWidget(this->area, 5, 1, 1, 2);
+  mainLayout->addWidget(new QLabel("Perimeter:"), 5, 0);
+  mainLayout->addWidget(this->perimeter, 5, 1, 1, 2);
 
-  mainLayout->addWidget(new QLabel("Perimeter:"), 6, 0);
-  mainLayout->addWidget(this->perimeter, 6, 1, 1, 2);
+  mainLayout->addWidget(new QLabel("Angles:"), 6, 0);
+  mainLayout->addWidget(this->angles, 6, 1, 1, 2);
 
-  mainLayout->addWidget(new QLabel("Angles:"), 7, 0);
-  mainLayout->addWidget(this->angles, 7, 1, 1, 2);
-
-  mainLayout->addWidget(new QLabel("Heights:"), 8, 0);
-  mainLayout->addWidget(this->heights, 8, 1, 1, 2);
+  mainLayout->addWidget(new QLabel("Heights:"), 7, 0);
+  mainLayout->addWidget(this->heights, 7, 1, 1, 2);
 
   connect(this->confirmInput, &QPushButton::released, this,
           &Widget::onInputConfirm);
 
-  connect(this->confirmIncreaseBy, &QPushButton::released, this,
-          &Widget::onInputIncreaseBy);
-
-  connect(this->confirmIncreaseTimes, &QPushButton::released, this,
-          &Widget::onInputIncreaseTimes);
+  connect(this->confirmIncrease, &QPushButton::released, this,
+          &Widget::onInputIncrease);
 
   connect(this, &Widget::valueChanged, &Widget::onValueChange);
 
