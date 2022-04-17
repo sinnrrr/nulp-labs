@@ -104,7 +104,10 @@ def matrix_method(eq_matrix: Matrix,
 
         ac_matrix.append(ac_row)
 
+    # swap rows and columns
     ac_transposed_matrix = [list(x) for x in zip(*ac_matrix)]
+
+    # divide matrix by a constant
     ac_inverted_matrix = [[z / determinant for z in y]
                           for y in ac_transposed_matrix]
 

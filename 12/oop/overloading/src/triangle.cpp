@@ -24,15 +24,14 @@ bool Triangle::isValid(TriangleSides sides) {
   const auto biggestSide = std::max({sides.a, sides.b, sides.c});
   const auto shortenedSum = sides.a + sides.b + sides.c - biggestSide;
 
-  if (shortenedSum > biggestSide) {
-    return true;
-  }
-
-  return false;
+  return shortenedSum > biggestSide;
 }
 
 bool Triangle::isRectangular() {
-  return pow(this->sides.c, 2) == pow(this->sides.a, 2) + pow(this->sides.b, 2);
+  const double eps = 0.01;
+
+  return fabs(pow(this->sides.c, 2) -
+              (pow(this->sides.a, 2) + pow(this->sides.b, 2))) < eps;
 };
 
 double Triangle::perimeter() {
@@ -114,14 +113,15 @@ Triangle::operator double() { return this->area(); }
 //
 // Friendly overloads
 //
+const int TRIANGLE_SIDES_COUNT = 3;
 
-void operator<<(QLineEdit *out[0 + 2 + 1], Triangle &triangle) {
+void operator<<(QLineEdit *out[TRIANGLE_SIDES_COUNT], Triangle &triangle) {
   for (int i = 0; i < 3; i++) {
     out[i]->setText(QString::number(*triangle.sidesMap[i]));
   }
 };
 
-void operator>>(QLineEdit *in[0 + 2 + 1], Triangle &triangle) {
+void operator>>(QLineEdit *in[TRIANGLE_SIDES_COUNT], Triangle &triangle) {
   for (int i = 0; i < 3; i++) {
     *triangle.sidesMap[i] = in[i]->text().toDouble();
   }

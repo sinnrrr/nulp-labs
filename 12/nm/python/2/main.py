@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from sympy import Pow, lambdify, symbols
 
 x = symbols("x")
