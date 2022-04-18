@@ -1,25 +1,32 @@
 #pragma once
 
+#include <QLineEdit>
+#include <map>
+
 #include "triangleangles.h"
 #include "triangleheights.h"
 #include "trianglesides.h"
 
-#include <QLineEdit>
-
-#include <map>
+#define TRIANGLE_SIDES_COUNT 3
 
 class Triangle {
 private:
   TriangleSides sides;
-  double *sidesMap[3 + 1] = {&this->sides.a, &this->sides.b, &this->sides.c};
+  static inline int trianglesCount = 0;
+  double *sidesArr[TRIANGLE_SIDES_COUNT] = {&this->sides.a, &this->sides.b,
+                                            &this->sides.c};
 
   bool isValid(TriangleSides sides);
 
 public:
+  Triangle(TriangleSides sides);
+  Triangle();
+
+  static int getTrianglesCount() { return Triangle::trianglesCount; };
+  static void incrementTrianglesCount() { Triangle::trianglesCount++; };
+
   auto getSides() { return this->sides; };
   void setSides(TriangleSides sides) { this->sides = sides; };
-
-  Triangle(TriangleSides sides);
 
   Triangle *operator+(const double increaseSidesBy);
   Triangle *operator*(const double increaseSidesTimes);

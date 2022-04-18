@@ -4,14 +4,21 @@
 #include <cmath>
 #include <stdexcept>
 
+bool compare_double(double x, double y, double epsilon = 0.01) {
+  return fabs(x - y) < epsilon;
+}
+
 //
 // Constructor and destructor
 //
+Triangle::Triangle() { Triangle::incrementTrianglesCount(); }
 
 Triangle::Triangle(TriangleSides sides) {
   if (!this->isValid(sides)) {
     throw std::invalid_argument("Received triangle cannot exist");
   }
+
+  Triangle::incrementTrianglesCount();
 
   this->setSides(sides);
 }
@@ -28,10 +35,8 @@ bool Triangle::isValid(TriangleSides sides) {
 }
 
 bool Triangle::isRectangular() {
-  const double eps = 0.01;
-
-  return fabs(pow(this->sides.c, 2) -
-              (pow(this->sides.a, 2) + pow(this->sides.b, 2))) < eps;
+  return compare_double(pow(this->sides.c, 2),
+                        (pow(this->sides.a, 2) + pow(this->sides.b, 2)));
 };
 
 double Triangle::perimeter() {
@@ -106,27 +111,27 @@ Triangle *Triangle::operator*(const double increaseSidesTimes) {
   return this;
 }
 
-double Triangle::operator[](const int i) { return *this->sidesMap[i - 1]; }
+double Triangle::operator[](const int i) { return *this->sidesArr[i - 1]; }
 
 Triangle::operator double() { return this->area(); }
 
 //
 // Friendly overloads
 //
-const int TRIANGLE_SIDES_COUNT = 3;
-
-void operator<<(QLineEdit *out[TRIANGLE_SIDES_COUNT], TriangleSides &sides) {
-  out[0]->setText(QString::number(sides.a));
-  out[1]->setText(QString::number(sides.b));
-  out[2]->setText(QString::number(sides.c));
+void operator<<(QLineEdit *out[TRIANGLE_SIDES_COUNT], Triangle &triangle) {
+  out[0]->setText(QString::number(triangle.sides.a));
+  out[1]->setText(QString::number(triangle.sides.b));
+  out[2]->setText(QString::number(triangle.sides.c));
 };
 
-void operator>>(QLineEdit *in[3], TriangleSides &sides) {
-  double *sidesMap[TRIANGLE_SIDES_COUNT] = {&sides.a, &sides.b, &sides.c};
+void operator>>(QLineEdit *in[TRIANGLE_SIDES_COUNT], Triangle &triangle) {
+  TriangleSides sides;
 
-  for (int i = 0; i < TRIANGLE_SIDES_COUNT; i++) {
-    *sidesMap[i] = in[i]->text().toDouble();
-  }
+  sides.a = in[0]->text().toDouble();
+  sides.b = in[1]->text().toDouble();
+  sides.c = in[2]->text().toDouble();
+
+  triangle.setSides(sides);
 };
 
 bool operator>(Triangle &tr1, Triangle &tr2) {
@@ -138,5 +143,5 @@ bool operator<(Triangle &tr1, Triangle &tr2) {
 };
 
 bool operator==(Triangle &tr1, Triangle &tr2) {
-  return tr1.area() == tr2.area();
+  return compare_double(tr1.area(), tr2.area());
 };

@@ -7,24 +7,27 @@
 #include <QMessageBox>
 
 void Widget::onInputConfirm() {
-  TriangleSides sides;
-  QLineEdit *sideInputs[3] = {this->side_a, this->side_b, this->side_c};
+  QLineEdit *sideInputs[] = {this->side_a, this->side_b, this->side_c};
 
-  sideInputs >> sides;
+  if (!this->triangle) {
+    this->triangle = new Triangle();
+  }
 
-  this->triangle = new Triangle(sides);
+  sideInputs >> *this->triangle;
 
   emit valueChanged(this->triangle);
 }
 
 void Widget::onInputIncreaseBy() {
   *this->triangle + this->increaseSidesBy->text().toDouble();
+  this->increaseSidesBy->clear();
 
   emit valueChanged(this->triangle);
 }
 
 void Widget::onInputIncreaseTimes() {
   (*this->triangle) * (this->increaseSidesTimes->text().toDouble());
+  this->increaseSidesTimes->clear();
 
   emit valueChanged(this->triangle);
 }
@@ -34,9 +37,9 @@ void Widget::onValueChange(Triangle *triangle) {
   TriangleHeights heights = triangle->heights();
   TriangleAngles angles = triangle->angles();
 
-  this->side_a->setText(QString::number(sides.a));
-  this->side_b->setText(QString::number(sides.b));
-  this->side_c->setText(QString::number(sides.c));
+  QLineEdit *sideInputs[] = {this->side_a, this->side_b, this->side_c};
+
+  sideInputs << *this->triangle;
 
   this->area->setText(QString::number(triangle->area()));
   this->perimeter->setText(QString::number(triangle->perimeter()));
