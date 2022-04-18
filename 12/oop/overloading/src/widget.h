@@ -35,6 +35,7 @@ private:
   QPushButton *confirmIncreaseBy;
   QPushButton *confirmIncreaseTimes;
 
+  QLabel *triangleInstancesCount;
   QLineEdit *area;
   QLineEdit *perimeter;
   QLineEdit *isRectangular;

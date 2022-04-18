@@ -41,6 +41,8 @@ void Widget::onValueChange(Triangle *triangle) {
 
   sideInputs << *this->triangle;
 
+  this->triangleInstancesCount->setText(
+      QString::number(triangle->getTrianglesCount()));
   this->area->setText(QString::number(triangle->area()));
   this->perimeter->setText(QString::number(triangle->perimeter()));
   this->isRectangular->setText(QVariant(triangle->isRectangular()).toString());
@@ -92,6 +94,9 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
   this->confirmIncreaseBy = new QPushButton("Increase by");
   this->confirmIncreaseTimes = new QPushButton("Increase times");
 
+  this->triangleInstancesCount =
+      new QLabel(QString::number(this->triangle->getTrianglesCount()));
+
   mainLayout->addWidget(this->side_a, 0, 0);
   mainLayout->addWidget(this->side_b, 0, 1);
   mainLayout->addWidget(this->side_c, 0, 2);
@@ -119,6 +124,8 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
 
   mainLayout->addWidget(new QLabel("Heights:"), 8, 0);
   mainLayout->addWidget(this->heights, 8, 1, 1, 2);
+
+  mainLayout->addWidget(this->triangleInstancesCount, 9, 0);
 
   connect(this->confirmInput, &QPushButton::released, this,
           &Widget::onInputConfirm);
