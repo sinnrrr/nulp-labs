@@ -41,13 +41,13 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 set(
   PROJECT_SOURCES
   main.cpp
-  triangle.cpp
-  triangle.h
-  trianglesides.h
-  triangleangles.h
-  triangleheights.h
   widget.cpp
   widget.h
+  customdeque.cpp
+  customdeque.h
+  deque.cpp
+  deque.h
+  node.h
 )
 
 # list(TRANSFORM PROJECT_SOURCES PREPEND "src/")

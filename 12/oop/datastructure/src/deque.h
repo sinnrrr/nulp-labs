@@ -26,9 +26,9 @@ public:
   void insertRear(int data);
   void deleteFront();
   void deleteRear();
-  int getFront();
-  int getRear();
-  int getSize();
+  Node *getFront();
+  Node *getRear();
+  double getSize();
   bool isEmpty();
   void erase();
 };

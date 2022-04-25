@@ -1,6 +1,6 @@
 #pragma once
 
-#include "triangle.h"
+#include "customdeque.h"
 
 #include <QLabel>
 #include <QLineEdit>
@@ -15,32 +15,26 @@ public:
   Widget(QWidget *parent = nullptr);
 
 private slots:
-  void onInputConfirm();
-  void onInputIncreaseBy();
-  void onInputIncreaseTimes();
-  void onValueChange(Triangle *triangle);
+  void onAddListItem();
+  void onAddTableItem();
+  void onQueueClear();
+  void onValueChange(CustomDeque *dq);
 
 signals:
-  void valueChanged(Triangle *triangle);
+  void valueChanged(CustomDeque *dq);
 
 private:
-  QLineEdit *side_a;
-  QLineEdit *side_b;
-  QLineEdit *side_c;
-  QPushButton *confirmInput;
+  CustomDeque *dq;
 
-  QLineEdit *increaseSidesBy;
-  QLineEdit *increaseSidesTimes;
+  QListWidget *listWidget;
+  QTableWidget *tableWidget;
 
-  QPushButton *confirmIncreaseBy;
-  QPushButton *confirmIncreaseTimes;
+  QPushButton *addListItemButton;
+  QPushButton *addTableItemButton;
 
-  QLabel *triangleInstancesCount;
-  QLineEdit *area;
-  QLineEdit *perimeter;
-  QLineEdit *isRectangular;
-  QTextEdit *angles;
-  QTextEdit *heights;
+  QPushButton *clearQueueButton;
 
-  Triangle *triangle;
+  QLineEdit *minValueInput;
+  QLineEdit *maxValueInput;
+  QLineEdit *averageValueInput;
 };

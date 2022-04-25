@@ -7,7 +7,7 @@ bool Deque::isEmpty() { return (front == NULL); }
 
 // Function to return the number of
 // elements in the deque
-int Deque::getSize() { return size; }
+double Deque::getSize() { return size; }
 
 // Function to insert an element
 // at the front end
@@ -110,25 +110,9 @@ void Deque::deleteRear() {
   }
 }
 
-// Function to return the element
-// at the front end
-int Deque::getFront() {
-  // If deque is empty, then returns
-  // garbage value
-  if (isEmpty())
-    return -1;
-  return front->data;
-}
+Node *Deque::getFront() { return this->front; }
 
-// Function to return the element
-// at the rear end
-int Deque::getRear() {
-  // If deque is empty, then returns
-  // garbage value
-  if (isEmpty())
-    return -1;
-  return rear->data;
-}
+Node *Deque::getRear() { return this->rear; }
 
 // Function to delete all the elements
 // from Deque

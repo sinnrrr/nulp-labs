@@ -2,7 +2,7 @@
 
 // Node of a doubly linked list
 struct Node {
-  int data;
+  double data;
   Node *prev, *next;
   // Function to get a new node
   static Node *getNode(int data) {
