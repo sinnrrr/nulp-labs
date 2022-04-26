@@ -15,8 +15,10 @@ public:
   Widget(QWidget *parent = nullptr);
 
 private slots:
-  void onAddListItem();
-  void onAddTableItem();
+  void onFrontItemInsert();
+  void onRearItemInsert();
+  void onFrontItemDelete();
+  void onRearItemDelete();
   void onQueueClear();
   void onValueChange(CustomDeque *dq);
 
@@ -27,14 +29,15 @@ private:
   CustomDeque *dq;
 
   QListWidget *listWidget;
-  QTableWidget *tableWidget;
+  QLineEdit *newQueueItemInput;
 
-  QPushButton *addListItemButton;
-  QPushButton *addTableItemButton;
-
+  QPushButton *insertFrontItemButton;
+  QPushButton *insertRearItemButton;
+  QPushButton *deleteFrontItemButton;
+  QPushButton *deleteRearItemButton;
   QPushButton *clearQueueButton;
 
-  QLineEdit *minValueInput;
-  QLineEdit *maxValueInput;
+  QLineEdit *biggestValueInput;
+  QLineEdit *smallestValueInput;
   QLineEdit *averageValueInput;
 };

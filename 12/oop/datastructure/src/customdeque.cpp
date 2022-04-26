@@ -29,10 +29,10 @@ const int linkedListExtremum(const ValueShouldBe valueShouldBe, Node *front) {
 }
 
 // Could be also implemented using accumulator in class
-const auto CustomDeque::getMaxValue() {
+const double CustomDeque::getMaxValue() {
   return linkedListExtremum(ValueShouldBe::Biggest, this->front);
 }
-const auto CustomDeque::getMinValue() {
+const double CustomDeque::getMinValue() {
   return linkedListExtremum(ValueShouldBe::Smallest, this->front);
 }
 
@@ -45,29 +45,6 @@ void operator+(CustomDeque &dq, double data) { dq.insertRear(data); }
 
 void operator-(double data, CustomDeque &dq) { dq.deleteFront(); }
 void operator-(CustomDeque &dq, Node *side) { dq.deleteRear(); }
-
-void operator>>(QTableWidget *in, CustomDeque &dq) {
-  dq.erase();
-
-  for (int i = 0; i < in->rowCount(); i++) {
-    dq + in->item(i, 0)->text().toDouble();
-  }
-}
-
-void operator<<(QTableWidget *out, CustomDeque &dq) {
-  out->setRowCount(dq.getSize());
-  out->setColumnCount(1);
-
-  int i = 0;
-  for (Node *temp = dq.getFront(); temp != nullptr; temp = temp->next) {
-    QTableWidgetItem *item = new QTableWidgetItem();
-
-    item->setText(QString::number(temp->data));
-    out->setItem(i, 0, item);
-
-    i++;
-  }
-}
 
 void operator>>(QListWidget *in, CustomDeque &dq) {
   dq.erase();
@@ -86,14 +63,6 @@ void operator<<(QListWidget *out, CustomDeque &dq) {
   }
 }
 
-void operator<<(QLabel *out, CustomDeque &dq) {
-  out->clear();
+void operator>>(QLineEdit *in, CustomDeque &dq) { in->text().toDouble() + dq; };
 
-  QString lastFixedQueueText = "Last fixed queue: ";
-
-  for (Node *temp = dq.getFront(); temp != nullptr; temp = temp->next) {
-    lastFixedQueueText += QString::number(temp->data) + " ";
-  }
-
-  out->setText(lastFixedQueueText);
-}
+void operator>>(CustomDeque &dq, QLineEdit *in) { dq + in->text().toDouble(); };
