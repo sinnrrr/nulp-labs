@@ -1,15 +1,15 @@
-#import "deque.h"
+#include "deque.h"
 
-#import <QLabel>
-#import <QLineEdit>
-#import <QListWidget>
-#import <QTableWidget>
+#include <QLabel>
+#include <QLineEdit>
+#include <QListWidget>
+#include <QTableWidget>
 
 class CustomDeque : public Deque {
 public:
   const double getMaxValue();
   const double getMinValue();
-  const double averageValue();
+  const double getAverageValue();
 
   void operator=(const CustomDeque &);
 

@@ -1,43 +1,44 @@
-#import "customdeque.h"
-#include "deque.h"
+#include "customdeque.h"
+#include <iostream>
 
-enum ValueShouldBe { Smallest = -1, Biggest = 1, Average = 0 };
-
-const int linkedListExtremum(const ValueShouldBe valueShouldBe, Node *front) {
-  int result = 0;
-  int i = 0;
+const int linkedListExtremum(Node *front,
+                             const bool (*comparator)(double, double)) {
+  int result;
 
   for (Node *temp = front; temp != nullptr; temp = temp->next) {
-    if (valueShouldBe == ValueShouldBe::Biggest && temp->data > result) {
+    if (comparator(temp->data, result)) {
       result = temp->data;
     }
-
-    if (valueShouldBe == ValueShouldBe::Smallest && temp->data < result) {
-      result = temp->data;
-    }
-
-    if (valueShouldBe == ValueShouldBe::Average) {
-      result += temp->data;
-    }
-  }
-
-  if (valueShouldBe == ValueShouldBe::Average) {
-    return result / i;
   }
 
   return result;
 }
 
-// Could be also implemented using accumulator in class
-const double CustomDeque::getMaxValue() {
-  return linkedListExtremum(ValueShouldBe::Biggest, this->front);
-}
-const double CustomDeque::getMinValue() {
-  return linkedListExtremum(ValueShouldBe::Smallest, this->front);
+const bool maxValueComparator(double value1, double value2) {
+  return value1 > value2;
 }
 
-const double CustomDeque::averageValue() {
-  return linkedListExtremum(ValueShouldBe::Average, this->front);
+const bool minValueComparator(double value1, double value2) {
+  return value1 < value2;
+}
+
+const double CustomDeque::getMaxValue() {
+  return linkedListExtremum(this->front, maxValueComparator);
+}
+const double CustomDeque::getMinValue() {
+  return linkedListExtremum(this->front, minValueComparator);
+}
+
+const double CustomDeque::getAverageValue() {
+  double result = 0;
+  int i = 0;
+
+  for (Node *temp = front; temp != nullptr; temp = temp->next) {
+    result += temp->data;
+    i++;
+  }
+
+  return result / i;
 }
 
 void operator+(double data, CustomDeque &dq) { dq.insertFront(data); }

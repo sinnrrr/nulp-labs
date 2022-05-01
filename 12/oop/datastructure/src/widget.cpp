@@ -37,9 +37,19 @@ void Widget::onValueChange(CustomDeque *dq) {
 
   this->biggestValueInput->setText(QString::number(dq->getMaxValue()));
   this->smallestValueInput->setText(QString::number(dq->getMinValue()));
-  this->averageValueInput->setText(QString::number(dq->getMinValue()));
+  this->averageValueInput->setText(QString::number(dq->getAverageValue()));
 
-  this->listWidget >> *dq;
+  // if queue is empty
+  if (dq->getSize() == 0) {
+    this->deleteFrontItemButton->setDisabled(true);
+    this->deleteRearItemButton->setDisabled(true);
+
+    this->biggestValueInput->clear();
+    this->smallestValueInput->clear();
+    this->averageValueInput->clear();
+  }
+
+  this->listWidget << *dq;
 }
 
 Widget::Widget(QWidget *parent) : QWidget(parent) {
@@ -52,6 +62,10 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
 
   this->dq = new CustomDeque;
   this->listWidget = new QListWidget;
+  this->listWidget->setItemAlignment(Qt::AlignCenter);
+
+  this->newQueueItemInput = new QLineEdit;
+  this->newQueueItemInput->setAlignment(Qt::AlignCenter);
 
   this->insertFrontItemButton = new QPushButton("Insert");
   this->insertRearItemButton = new QPushButton("Insert");
@@ -61,7 +75,6 @@ Widget::Widget(QWidget *parent) : QWidget(parent) {
   this->clearQueueButton = new QPushButton("Clear queue");
   this->clearQueueButton->setSizePolicy(sizePolicy);
 
-  this->newQueueItemInput = new QLineEdit;
   this->smallestValueInput = new QLineEdit;
   this->biggestValueInput = new QLineEdit;
   this->averageValueInput = new QLineEdit;
