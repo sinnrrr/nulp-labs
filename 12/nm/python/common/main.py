@@ -28,8 +28,6 @@ class MatrixOrientedMethod(Method):
         self.A = np.array(A)
         self.B = np.array(B)
 
-        self.method_name = "Gaussian elimination"
-
     def execute_method(self):
         raise NotImplementedError
 
@@ -56,6 +54,8 @@ class GaussianEliminationMethod(MatrixOrientedMethod):
 
     def __init__(self, A: Matrix, B: Row) -> None:
         super().__init__(A, B)
+
+        self.method_name = "Gaussian elimination"
 
     def execute_method(self):
         n = len(self.B)
