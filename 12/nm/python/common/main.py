@@ -49,7 +49,7 @@ class MatrixOrientedMethod(Method):
 
         print("\n")
         print_header("Results verification")
-        print("AX - B = " + np.dot(self.A, result) - self.B)
+        print(f"AX - B = {np.dot(self.A, result) - self.B}")
 
 
 class GaussianEliminationMethod(MatrixOrientedMethod):
