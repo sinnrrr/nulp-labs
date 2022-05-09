@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from common.main import GaussianEliminationMethod
+from common.main import GaussianEliminationMethod, LUDecompositionMethod
 
 if __name__ == "__main__":
     A = [
@@ -10,3 +10,4 @@ if __name__ == "__main__":
     B = [2.71, 5.26, 1.03]
 
     GaussianEliminationMethod(A, B).compile()
+    LUDecompositionMethod(A, B).compile()

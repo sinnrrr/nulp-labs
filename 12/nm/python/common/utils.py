@@ -16,4 +16,4 @@ def print_header(header: str):
 
 
 def print_method_introduction(name: str):
-    print(f"{Fore.CYAN}>>> {name} method{Style.RESET_ALL}\n")
+    print(f"\n\n{Fore.CYAN}>>> {name} method{Style.RESET_ALL}\n")
