@@ -11,4 +11,6 @@
 | 5 | Створення та використання класів   | 9       | Трикутник                                  | [classcreation](classcreation)                                |
 | 6 | Перевантаження функцій і операцій  | 9       | Трикутник                                  | [overloading](overloading)                                    |
 | 7 | Робота з динамічною памʼяттю       | 9       | Deque                                      | [datastructure](datastructure)                                |
+| 8 | Наслідування                       | 3       | Bank deposit                               | [inheritance](inheritance)                                    |
+| 9 | Принцип поліморфізму               | 9       | Wholesale client                           | [polymorphism](polymorphism)                                  |
 
