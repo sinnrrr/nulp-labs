@@ -11,5 +11,5 @@ if __name__ == "__main__":
     ]
     B = [0.15, 0.11, 0.12]
 
-    for method_solver in [GaussianEliminationMethod, LUDecompositionMethod]:
-        method_solver(A, B).compile()
+    for method in [GaussianEliminationMethod, LUDecompositionMethod]:
+        method(A, B).compile()
