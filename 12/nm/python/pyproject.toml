@@ -9,6 +9,7 @@ python = "^3.9"
 sympy = "^1.10.1"
 colorama = "^0.4.4"
 numpy = "^1.22.3"
+prettytable = "^3.3.0"
 
 [tool.poetry.dev-dependencies]
 

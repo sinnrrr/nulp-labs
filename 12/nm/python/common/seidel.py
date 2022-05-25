@@ -1,13 +1,12 @@
 import numpy as np
-from common.main import Matrix, MatrixOrientedMethod, Row
+from common.main import MatrixOrientedMethod
 from common.utils import is_convergent, print_header
 
 
 class SeidelMethod(MatrixOrientedMethod):
 
-    def __init__(self, A: Matrix, B: Row) -> None:
-        super().__init__(A, B)
-        self.method_name = "Seidel"
+    def __init__(self, A, B) -> None:
+        super().__init__("Seidel", A, B)
 
         if not is_convergent(self.A):
             raise ValueError("A is not convergent")

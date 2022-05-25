@@ -1,16 +1,14 @@
 from math import fabs
 
 import numpy as np
-from common.main import Matrix, MatrixOrientedMethod, Row
+from common.main import MatrixOrientedMethod
 from common.utils import print_header, print_matrix
 
 
 class GaussianEliminationMethod(MatrixOrientedMethod):
 
-    def __init__(self, A: Matrix, B: Row) -> None:
-        super().__init__(A, B)
-
-        self.method_name = "Gaussian elimination"
+    def __init__(self, A, B) -> None:
+        super().__init__("Gaussian elimination", A, B)
 
     def execute_method(self):
         n = len(self.B)

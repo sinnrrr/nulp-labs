@@ -1,5 +1,16 @@
+import os
+import sys
+
 import numpy as np
 from colorama import Fore, Style
+
+
+def blockPrint():
+    sys.stdout = open(os.devnull, 'w')
+
+
+def enablePrint():
+    sys.stdout = sys.__stdout__
 
 
 def print_matrix(matrix, name: str):
@@ -34,3 +45,33 @@ def is_convergent(E):
     print(f"Norms: {norms}")
 
     return min(norms) < 1
+
+
+def forward_sub(L, b):
+    """solution to Lx = b
+    L must be a lower-triangular matrix
+    b must be a vector of the same leading dimension as L
+    """
+    n = len(L)
+    x = np.zeros(n)
+    for i in range(n):
+        sum = 0
+        for j in range(i):
+            sum += L[i, j] * x[j]
+        x[i] = (b[i] - sum) / L[i, i]
+    return x
+
+
+def back_sub(U, b):
+    """solution to Ux = b
+    U must be an upper-triangular matrix
+    b must be a vector of the same leading dimension as U
+    """
+    n = len(U)
+    x = np.zeros(n)
+    for i in range(n - 1, -1, -1):
+        sum = 0
+        for j in range(n - 1, i, -1):
+            sum += U[i, j] * x[j]
+        x[i] = (b[i] - sum) / U[i, i]
+    return x
