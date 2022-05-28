@@ -1,4 +1,5 @@
 from common.lagrange_polynomial import LagrangePolynomialMethod, Points
+from common.newton_polynomial import NewtonPolynomialMethod
 
 if __name__ == "__main__":
     points: Points = ([
@@ -6,5 +7,5 @@ if __name__ == "__main__":
     ], [20.19, 19.61, 18.94, 18.17, 17.30, 16.31, 15.19, 13.94, 12.55, 10.99])
     x0 = 0.455
 
-    for method in [LagrangePolynomialMethod]:
+    for method in [LagrangePolynomialMethod, NewtonPolynomialMethod]:
         method(points, x0).compile()
