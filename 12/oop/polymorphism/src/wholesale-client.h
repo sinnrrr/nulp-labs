@@ -65,6 +65,7 @@ public:
 };
 
 class ComplexWholesaleClient : public WholesaleClient {
+
 public:
   ComplexWholesaleClient(string name, double balance = 0)
       : WholesaleClient(name, balance) {
