@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(inheritance LANGUAGES CXX)
+project(polymorphysm LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -20,34 +20,27 @@ set(
   main.cpp
   widget.cpp
   widget.h
-  bankdeposit.cpp
-  bankdeposit.h
-  simplebankdeposit.h
-  simplebankdeposit.cpp
-  complexbankdeposit.h
-  complexbankdeposit.cpp
-  vipbankdeposit.h
-  vipbankdeposit.cpp
+  wholesale-client.h
 )
 
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(
-    inheritance
+    polymorphysm
     ${PROJECT_SOURCES}
   )
 else()
   if(ANDROID)
     add_library(
-      inheritance SHARED
+      polymorphysm SHARED
       ${PROJECT_SOURCES}
     )
   else()
     add_executable(
-      inheritance
+      polymorphysm
       ${PROJECT_SOURCES}
     )
   endif()
 endif()
 
-target_link_libraries(inheritance PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(polymorphysm PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

@@ -1,49 +1,60 @@
 #include "widget.h"
+#include "wholesale-client.h"
 
 #include <QFile>
 #include <QGridLayout>
 #include <QTextStream>
+#include <iostream>
 #include <vector>
 
-#include "bankdeposit.h"
-#include "complexbankdeposit.h"
-#include "simplebankdeposit.h"
-#include "vipbankdeposit.h"
-
 void Widget::on_output() {
-  auto terminate_date = 60 * 60 * 24 * 30 * 3;
-  auto monthly_rate = .01;
-  auto initial_amount = 10000;
+  const string clientName = "Clementh";
+  const auto balanceForEveryone = 100;
 
-  SimpleBankDeposit d1(0, terminate_date, monthly_rate, initial_amount);
-  ComplexBankDeposit d2(0, terminate_date, monthly_rate, initial_amount);
-  VIPBankDeposit d3(0, terminate_date, monthly_rate, initial_amount);
+  const WholesaleThing thing = {"123",    // id
+                                "Shovel", // name
+                                15};
 
-  d3.add_money(1000000);
+  this->operated_classes.push_back(
+      new RegularWholesaleClient(clientName, balanceForEveryone));
+  this->operated_classes.push_back(
+      new ComplexWholesaleClient(clientName, balanceForEveryone));
+  this->operated_classes.push_back(
+      new VipWholesaleClient(clientName, balanceForEveryone));
+
+  std::cout << (new ComplexWholesaleClient(clientName, balanceForEveryone))
+                   ->getClassName()
+            << '\n'
+            << this->operated_classes[1]->getClassName();
 
   this->class_names_output->setMarkdown(
-      QString("### BankDeposit classes:\n\n"
+      QString("### WholesaleClient clild classes:\n\n"
               "* %1\n"
               "* %2\n"
               "* %3")
-          .arg(QString::fromStdString(d1.print_class_name()))
-          .arg(QString::fromStdString(d2.print_class_name()))
-          .arg(QString::fromStdString(d3.print_class_name())));
+          .arg(
+              QString::fromStdString(this->operated_classes[0]->getClassName()))
+          .arg(
+              QString::fromStdString(this->operated_classes[1]->getClassName()))
+          .arg(QString::fromStdString(
+              this->operated_classes[2]->getClassName())));
 
   auto output_string =
       QString("### Parameters\n"
-              "`monthly rate = %4, initial amount = %5, months = %6`:\n"
+              "`balance = %4, wholesale thing price = %5`:\n"
               "\n"
-              "### Results\n"
-              "* Simple Deposit income: %1\n"
-              "* Complex Deposit income: %2\n"
-              "* VIP Deposit income: %3")
-          .arg(QString::number(d1.calculate_income()))
-          .arg(QString::number(d2.calculate_income()))
-          .arg(QString::number(d3.calculate_income()))
-          .arg(QString::number(monthly_rate))
-          .arg(QString::number(initial_amount))
-          .arg(QString::number(terminate_date / (60 * 60 * 24 * 30)));
+              "### Result price\n"
+              "* Regular: %1\n"
+              "* Complex: %2\n"
+              "* VIP: %3")
+          .arg(QString::number(
+              this->operated_classes[0]->getPriceWithDiscount(thing.price)))
+          .arg(QString::number(
+              this->operated_classes[1]->getPriceWithDiscount(thing.price)))
+          .arg(QString::number(
+              this->operated_classes[2]->getPriceWithDiscount(thing.price)))
+          .arg(QString::number(balanceForEveryone))
+          .arg(QString::number(thing.price));
 
   QFile file("results.md");
   if (file.open(QIODevice::Append)) {
@@ -57,7 +68,7 @@ void Widget::on_output() {
 Widget::Widget(QWidget *parent) : QWidget(parent) {
   auto *main_layout = new QGridLayout;
 
-  this->output_btn = new QPushButton("Print output and save to file");
+  this->output_btn = new QPushButton("Print output");
 
   this->class_names_output = new QTextEdit;
   this->class_names_output->setReadOnly(true);

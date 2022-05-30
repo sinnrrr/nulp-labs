@@ -1,5 +1,6 @@
 #pragma once
 
+#include "wholesale-client.h"
 #include <QPushButton>
 #include <QTextEdit>
 #include <QWidget>
@@ -14,6 +15,8 @@ private slots:
   void on_output();
 
 private:
+  std::vector<WholesaleClient *> operated_classes;
+
   QPushButton *output_btn;
 
   QTextEdit *class_names_output;

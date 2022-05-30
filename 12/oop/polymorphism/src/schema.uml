@@ -1,0 +1,81 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class ComplexWholesaleClient {
+	+ComplexWholesaleClient(string name, double balance)
+	+getClassName() : string
+}
+
+
+class RegularWholesaleClient {
+	+RegularWholesaleClient(string name, double balance)
+	+getClassName() : string
+}
+
+
+class VipWholesaleClient {
+	+VipWholesaleClient(string name, double balance)
+	+getClassName() : string
+}
+
+
+class WholesaleClient {
+	+WholesaleClient(string name, double balance)
+	#notifiable : bool
+	#balance : double
+	#discount_percent : double
+	+getPriceWithDiscount(double itemPrice) : double
+	+getClassName() : string
+	#name : string
+	+buy(WholesaleThing thing) : void
+}
+
+
+abstract class CanDoPurchases <template<typename BuyEntity>> {
+	+{abstract} buy(BuyEntity thing) : void
+}
+
+
+class WholesaleThing {
+	+price : double
+	+id : string
+	+name : string
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+.CanDoPurchases <|-- .WholesaleClient
+
+
+.ComplexWholesaleClient <|-- .VipWholesaleClient
+
+
+.WholesaleClient <|-- .ComplexWholesaleClient
+
+
+.WholesaleClient <|-- .RegularWholesaleClient
+
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
