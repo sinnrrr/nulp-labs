@@ -1,0 +1,59 @@
+@startuml
+abstract class Людина {
+  +name: String
+  +age: Number
+}
+
+class Оператор {
+  +get_plane_for_visitor()
+  +work()
+}
+
+class Система {
+  +people: Людина[]
+  +planes: Літак[]
+  +income: Прибуток
+  +location: String
+}
+
+class Літак {
+  +id: Number
+  +name: String
+  +departsAt: Date
+  +arrivesAt: Date
+}
+
+class Пасажир {
+  +planes: Літак[]
+  +planes_taken: Number
+  +ask_for_plane()
+}
+
+class Прибуток {
+  +amount: Number
+}
+
+abstract class Працівник {
+  #salary: Number
+  +year_of_experience: Number
+  {abstract} work()
+}
+
+class Адміністратор { 
+  +add_operator()
+  +order_plane()
+  +work()
+}
+
+Система o-- Людина
+Людина <|-- Працівник
+Людина <|-- Пасажир
+Пасажир --> Літак  
+Прибуток ..> Пасажир
+Система *.. Прибуток
+Працівник <|-- Оператор
+Працівник <|-- Адміністратор
+Адміністратор --> Система 
+Система o-- Літак 
+Оператор --> Пасажир 
+@enduml
