@@ -1,5 +1,5 @@
-import { Alert, Modal, Snackbar } from "@mui/material"
-import { useState } from "react"
+import { Alert, Modal, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { useRef } from "react"
 import { useDisclosure } from "react-use-disclosure"
 import { z } from "zod"
 import { useStudentsContext } from "../contexts/students"
@@ -8,8 +8,8 @@ import { LoadDataFileButton } from "./LoadDataFileButton"
 
 export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNode }) => {
   const { setStudents } = useStudentsContext()
-  const [validationErrors, setValidationErrors] = useState<any[] | null>(null)
-  const validationModalDisclosure = useDisclosure(validationErrors ? validationErrors.length > 0 : false);
+  const validationErrors = useRef<z.ZodError | null>(null)
+  const validationModalDisclosure = useDisclosure();
   const fileEmptyDisclosure = useDisclosure();
   const fileOpenErrorDisclosure = useDisclosure();
   const successSnackbarDisclosure = useDisclosure();
@@ -23,8 +23,13 @@ export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNod
     }
 
     await z.array(StudentSchema).parseAsync(rawStudents)
-      .then(setStudents)
-      .catch(setValidationErrors)
+      .then((students) => {
+        setStudents(students)
+        successSnackbarDisclosure.open()
+      }).catch((errors) => {
+        validationErrors.current = errors
+        validationModalDisclosure.open()
+      })
   }
 
   const onFileOpenError = () => {
@@ -66,7 +71,34 @@ export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNod
       open={validationModalDisclosure.isOpen}
       onClose={validationModalDisclosure.close}
     >
-      <code>{JSON.stringify(validationErrors)}</code>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ width: 0 }}>Code</TableCell>
+              <TableCell sx={{ width: 0 }}>Expected</TableCell>
+              <TableCell sx={{ width: 0 }}>Received</TableCell>
+              <TableCell sx={{ width: 0 }}>Element</TableCell>
+              <TableCell sx={{ width: 0 }}>Field</TableCell>
+              <TableCell>Message</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {validationErrors.current?.errors.map((error) => (
+              <TableRow
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell>{error.code}</TableCell>
+                <TableCell>{(error as any).expected}</TableCell>
+                <TableCell>{(error as any).received}</TableCell>
+                <TableCell>{error.path[0]}</TableCell>
+                <TableCell>{error.path[1]}</TableCell>
+                <TableCell>{error.message}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Modal>
 
     <LoadDataFileButton onSubmit={onStudentsFileLoaded} onError={onFileOpenError}>{children}</LoadDataFileButton>
