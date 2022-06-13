@@ -22,8 +22,13 @@ class NewtonPolynomialMethod(InterpolationOrientedMethod):
 
         x = np.copy(self.points[0])
         a = np.copy(self.points[1])
+        # t = PrettyTable(["Function", "Coefficient"])
+
         for k in range(1, m):
             a[k:m] = (a[k:m] - a[k - 1]) / (x[k:m] - x[k - 1])
+            # t.add_row([f"f({k-1}, {k})", a[k]])
+
+        # print(t)
 
         return a
 
@@ -44,11 +49,14 @@ class NewtonPolynomialMethod(InterpolationOrientedMethod):
         a = self.newton_coefficient()
         n = len(self.points[0]) - 1  # Degree of polynomial
         yp = a[n]
+        t = PrettyTable(["Step", "Y"])
+
+        for k in range(1, n + 1):
+            yp = a[n - k] + (xp - self.points[0][n - k]) * yp
+            t.add_row([k, yp])
 
         print("\n")
         print_header("Iteration process")
-        for k in range(1, n + 1):
-            yp = a[n - k] + (xp - self.points[0][n - k]) * yp
-            print(yp)
+        print(t)
 
         return xp, yp
