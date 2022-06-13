@@ -1,10 +1,33 @@
 import { Alert, Modal, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { styled } from '@mui/material/styles'
+import { tableCellClasses } from '@mui/material/TableCell'
+import * as React from 'react'
 import { useRef } from "react"
 import { useDisclosure } from "react-use-disclosure"
 import { z } from "zod"
 import { useStudentsContext } from "../contexts/students"
 import { StudentSchema } from "../schemas/student"
 import { LoadDataFileButton } from "./LoadDataFileButton"
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.error.light,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNode }) => {
   const { setStudents } = useStudentsContext()
@@ -75,26 +98,26 @@ export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNod
         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ width: 0 }}>Code</TableCell>
-              <TableCell sx={{ width: 0 }}>Expected</TableCell>
-              <TableCell sx={{ width: 0 }}>Received</TableCell>
-              <TableCell sx={{ width: 0 }}>Element</TableCell>
-              <TableCell sx={{ width: 0 }}>Field</TableCell>
-              <TableCell>Message</TableCell>
+              <StyledTableCell sx={{ width: 0 }}>Code</StyledTableCell>
+              <StyledTableCell sx={{ width: 0 }}>Expected</StyledTableCell>
+              <StyledTableCell sx={{ width: 0 }}>Received</StyledTableCell>
+              <StyledTableCell sx={{ width: 0 }}>Element</StyledTableCell>
+              <StyledTableCell sx={{ width: 0 }}>Field</StyledTableCell>
+              <StyledTableCell>Message</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {validationErrors.current?.errors.map((error) => (
-              <TableRow
+              <StyledTableRow
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell>{error.code}</TableCell>
-                <TableCell>{(error as any).expected}</TableCell>
-                <TableCell>{(error as any).received}</TableCell>
-                <TableCell>{error.path[0]}</TableCell>
-                <TableCell>{error.path[1]}</TableCell>
-                <TableCell>{error.message}</TableCell>
-              </TableRow>
+                <StyledTableCell>{error.code}</StyledTableCell>
+                <StyledTableCell>{(error as any).expected}</StyledTableCell>
+                <StyledTableCell>{(error as any).received}</StyledTableCell>
+                <StyledTableCell>{error.path[0]}</StyledTableCell>
+                <StyledTableCell>{error.path[1]}</StyledTableCell>
+                <StyledTableCell>{error.message}</StyledTableCell>
+              </StyledTableRow>
             ))}
           </TableBody>
         </Table>
