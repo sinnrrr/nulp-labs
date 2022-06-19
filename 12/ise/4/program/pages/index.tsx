@@ -1,7 +1,7 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import { Box, Button, IconButton, Pagination, Stack, Typography } from '@mui/material';
-import { DataGrid, GridColDef, gridPageCountSelector, gridPageSelector, GridValueGetterParams, useGridApiContext, useGridSelector } from '@mui/x-data-grid';
+import { DataGrid, getGridDefaultColumnTypes, GridCellParams, GridColDef, GridFilterItem, GridFilterOperator, gridPageCountSelector, gridPageSelector, GridStateColDef, GridValueGetterParams, useGridApiContext, useGridSelector } from '@mui/x-data-grid';
 import { randFirstName, randLastName, randNumber, randPastDate } from '@ngneat/falso';
 import type { NextPage } from 'next';
 import { LoadStudentsFileButton } from '../components/LoadStudentsFileButton';
@@ -9,12 +9,40 @@ import { useStudentsContext } from "../contexts/students";
 import { Student } from '../schemas/student';
 import { averageNumber } from '../utils/averageNumber';
 
+const wrapOperator = (operator: GridFilterOperator) => {
+  const getApplyFilterFn = (
+    filterItem: GridFilterItem,
+    column: GridStateColDef,
+  ) => {
+    const innerFilterFn = operator.getApplyFilterFn(filterItem, column);
+    if (!innerFilterFn) {
+      return innerFilterFn;
+    }
+
+    return (params: GridCellParams) => {
+      return !innerFilterFn(params);
+    };
+  };
+
+  return {
+    ...operator,
+    getApplyFilterFn,
+    label: 'excludes',
+    value: 'excludes',
+  };
+};
+
+const gridStringColumnDefaults = getGridDefaultColumnTypes().string
+const notContainsOperator = wrapOperator(gridStringColumnDefaults.filterOperators!.filter(f => f.value === "contains")[0])
+gridStringColumnDefaults.filterOperators!.unshift(notContainsOperator)
+
 const columns: GridColDef<Student>[] = [
   { field: 'firstName', headerName: 'First name' },
   { field: 'lastName', headerName: 'Last name' },
   {
     field: 'grades',
     headerName: 'Grades',
+    filterOperators: gridStringColumnDefaults.filterOperators
   },
   {
     field: 'gradesAverage',
