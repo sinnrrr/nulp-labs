@@ -14,4 +14,5 @@
 | 8  | Наслідування                       | 3       | Bank deposit                               | [inheritance](inheritance)                                    |
 | 9  | Принцип поліморфізму               | 9       | Wholesale client                           | [polymorphism](polymorphism)                                  |
 | 10 | Шаблони класів                     | 8       | Set                                        | [classtemplate](classtemplate)                                |
-
+| 11 | STL контейнери                     | 12      | vector + map + char                        | [stlcontainers](stlcontainers)                                |
+| 12 | Виняткові ситуації                 | 3       | Fraction                                   | [exceptions](exceptions)                                      |

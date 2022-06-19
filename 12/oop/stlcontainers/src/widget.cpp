@@ -1,83 +1,117 @@
 #include "widget.h"
-#include "custom-set.h"
-#include "custom-string.h"
 
+#include <algorithm>
 #include <iostream>
-#include <string>
-#include <vector>
+#include <random>
+#include <sstream>
 
-using std::string;
-
-void Widget::onValueChange() {
-  this->leftSetList->clear();
-  this->rightSetList->clear();
-  this->intersectionSetList->clear();
-
-  int i = 0;
-
-  i = 0;
-  for (auto el : *this->leftSet) {
-    this->leftSetList->insertItem(i++, el);
+template <typename T> std::string to_str(std::vector<T> &vec) {
+  std::ostringstream oss;
+  if (!vec.empty()) {
+    std::copy(vec.begin(), vec.end() - 1, std::ostream_iterator<T>(oss, ", "));
+    oss << vec.back();
   }
-
-  i = 0;
-  for (auto el : *this->rightSet) {
-    this->rightSetList->insertItem(i++, el);
-  }
-
-  i = 0;
-  for (auto el : this->leftSet->intersection(this->rightSet)) {
-    this->intersectionSetList->insertItem(i++, el);
-  }
+  return oss.str();
 }
 
-void Widget::onClear() {
-  this->leftSet->erase();
-  this->rightSet->erase();
+auto random_boolean = std::bind(std::uniform_int_distribution<>(0, 1),
+                                std::default_random_engine());
 
-  emit valueChanged();
+std::string random_string(size_t length) {
+  auto randchar = []() -> char {
+    const char charset[] = "0123456789"
+                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                           "abcdefghijklmnopqrstuvwxyz";
+    const size_t max_index = (sizeof(charset) - 1);
+    return charset[rand() % max_index];
+  };
+  std::string str(length, 0);
+  std::generate_n(str.begin(), length, randchar);
+  return str;
 }
 
-void Widget::onOutput() {
-  vector<SetElementType> a;
-  vector<SetElementType> b;
+struct filterChars {
+  bool operator()(const char *s) { return strstr(s, "a") == s; }
+};
 
-  int int1 = 1;
-  int int2 = 2;
-  int int3 = 3;
+void Widget::on_start() {
+  map.empty();
+  vector.clear();
+  vector2.clear();
 
-  a.push_back(int1);
-  a.push_back(int2);
-  a.push_back(int3);
+  for (auto i = 0; i < 10; i++) {
+    vector.push_back(random_string(10).c_str());
+    vector2.push_back(random_string(10).c_str());
+  }
+  this->output_1->setMarkdown(
+      QString("### Vector1:\n%1").arg(QString::fromStdString(to_str(vector))));
 
-  b.push_back(int1);
-  b.push_back(int2);
+  vector.erase(vector.begin() + 2, vector.begin() + 7);
+  vector.at(3) = "Dima";
+  vector.insert(vector.end(), vector2.begin(), vector2.end());
+  std::sort(vector.begin(), vector.end(),
+            [](const char *c1, const char *c2) { return strcmp(c1, c2) < 0; });
+  auto find_res = std::find_if(vector.begin(), vector.end(), filterChars());
 
-  this->leftSet = new CustomSet<SetElementType>(a);
-  this->rightSet = new CustomSet<SetElementType>(b);
+  this->output_2->setMarkdown(QString("### Vector1 sorted desc:\n%1"
+                                      "\n### Vector2:\n%2"
+                                      "\n### Find result:\n%3")
+                                  .arg(QString::fromStdString(to_str(vector)))
+                                  .arg(QString::fromStdString(to_str(vector2)))
+                                  .arg(QString(*find_res))
 
-  emit valueChanged();
+  );
+
+  std::for_each(vector.begin(), vector.end(), [this](const char *s) {
+    if (filterChars()(s)) {
+      map.insert({s, random_boolean()});
+    }
+  });
+
+  std::vector<const char *> vector_from_map;
+  for (auto el : map) {
+    vector_from_map.push_back(el.first);
+  }
+  std::sort(vector.begin(), vector.end());
+  std::sort(vector_from_map.begin(), vector_from_map.end());
+
+  this->output_3->setMarkdown(
+      QString("### Vector1 sorted asc:\n%1"
+              "\n### Map1 sorted asc:\n%2")
+          .arg(QString::fromStdString(to_str(vector)))
+          .arg(QString::fromStdString(to_str(vector_from_map))));
+
+  std::vector<const char *> merged_vector(vector.size() +
+                                          vector_from_map.size());
+  std::merge(vector.begin(), vector.end(), vector_from_map.begin(),
+             vector_from_map.end(), merged_vector.begin());
+
+  int count =
+      std::count_if(merged_vector.begin(), merged_vector.end(), filterChars());
+  this->output_4->setMarkdown(
+      QString("### Merged vector:\n%1"
+              "\n### %2 elements satisfy filter")
+          .arg(QString::fromStdString(to_str(merged_vector)))
+          .arg(QString::number(count)));
 }
 
 Widget::Widget(QWidget *parent) : QWidget(parent) {
-  auto *mainLayout = new QGridLayout;
+  auto *main_layout = new QGridLayout;
 
-  this->outputButton = new QPushButton("Print output");
-  this->clearButton = new QPushButton("Clear");
+  this->start_btn = new QPushButton("Start");
 
-  this->leftSetList = new QListWidget;
-  this->rightSetList = new QListWidget;
-  this->intersectionSetList = new QListWidget;
+  this->output_1 = new QTextEdit;
+  this->output_2 = new QTextEdit;
+  this->output_3 = new QTextEdit;
+  this->output_4 = new QTextEdit;
 
-  mainLayout->addWidget(this->leftSetList, 0, 0, 2, 1);
-  mainLayout->addWidget(this->rightSetList, 0, 1, 2, 1);
-  mainLayout->addWidget(this->intersectionSetList, 2, 0, 1, 2);
-  mainLayout->addWidget(this->outputButton, 3, 0);
-  mainLayout->addWidget(this->clearButton, 3, 1);
+  main_layout->addWidget(this->output_1, 0, 0);
+  main_layout->addWidget(this->output_2, 0, 1);
+  main_layout->addWidget(this->output_3, 1, 0);
+  main_layout->addWidget(this->output_4, 1, 1);
+  main_layout->addWidget(this->start_btn, 2, 0, 1, 2);
 
-  connect(this->outputButton, &QPushButton::released, this, &Widget::onOutput);
-  connect(this->clearButton, &QPushButton::released, this, &Widget::onClear);
-  connect(this, &Widget::valueChanged, &Widget::onValueChange);
+  connect(this->start_btn, &QPushButton::released, this, &Widget::on_start);
 
-  setLayout(mainLayout);
+  setLayout(main_layout);
 }

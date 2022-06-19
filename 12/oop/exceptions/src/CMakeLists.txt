@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(stlcontainers LANGUAGES CXX)
+project(exceptions LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -20,26 +20,27 @@ set(
   main.cpp
   widget.cpp
   widget.h
+  fraction.h
 )
 
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(
-    stlcontainers
+    exceptions
     ${PROJECT_SOURCES}
   )
 else()
   if(ANDROID)
     add_library(
-      stlcontainers SHARED
+      exceptions SHARED
       ${PROJECT_SOURCES}
     )
   else()
     add_executable(
-      stlcontainers
+      exceptions
       ${PROJECT_SOURCES}
     )
   endif()
 endif()
 
-target_link_libraries(stlcontainers PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(exceptions PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

@@ -1,34 +1,32 @@
 #pragma once
 
-#include "custom-set.h"
-#include "custom-string.h"
+#include <QFile>
 #include <QGridLayout>
-#include <QListWidget>
 #include <QPushButton>
+#include <QTextEdit>
+#include <QTextStream>
 #include <QWidget>
+#include <map>
 
 class Widget : public QWidget {
   Q_OBJECT
 
-signals:
-  void valueChanged();
+  using OperatedType = const char *;
 
 public:
   Widget(QWidget *parent = nullptr);
+  void print_array();
 
+  std::map<OperatedType, bool> map;
+  std::vector<OperatedType> vector;
+  std::vector<OperatedType> vector2;
 private slots:
-  void onClear();
-  void onOutput();
-  void onValueChange();
+  void on_start();
 
 private:
-  CustomSet<SetElementType> *leftSet;
-  CustomSet<SetElementType> *rightSet;
-
-  QPushButton *outputButton;
-  QPushButton *clearButton;
-
-  QListWidget *leftSetList;
-  QListWidget *rightSetList;
-  QListWidget *intersectionSetList;
+  QPushButton *start_btn;
+  QTextEdit *output_1;
+  QTextEdit *output_2;
+  QTextEdit *output_3;
+  QTextEdit *output_4;
 };
