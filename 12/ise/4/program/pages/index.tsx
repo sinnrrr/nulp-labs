@@ -1,6 +1,8 @@
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
-import { Box, Button, Pagination, Stack, Typography } from '@mui/material';
+import { Box, Button, IconButton, Pagination, Stack, Typography } from '@mui/material';
 import { DataGrid, GridColDef, gridPageCountSelector, gridPageSelector, GridValueGetterParams, useGridApiContext, useGridSelector } from '@mui/x-data-grid';
+import { randFirstName, randLastName, randNumber, randPastDate } from '@ngneat/falso';
 import type { NextPage } from 'next';
 import { LoadStudentsFileButton } from '../components/LoadStudentsFileButton';
 import { useStudentsContext } from "../contexts/students";
@@ -33,17 +35,39 @@ const CustomPagination = () => {
   const apiRef = useGridApiContext();
   const page = useGridSelector(apiRef, gridPageSelector);
   const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+  const { studentsDataString, addStudent } = useStudentsContext()
+
+  const handleAddStudentButtonClick = () => {
+    addStudent({
+      id: randNumber(),
+      firstName: randFirstName(),
+      lastName: randLastName(),
+      grades: randNumber({ min: 1, max: 5, length: 6 }),
+      birthDate: +randPastDate()
+    })
+  }
 
   const hasRows = apiRef.current.getRowsCount() > 0
-
   if (!hasRows) return null;
 
   return (
-    <Stack direction="row" sx={{ display: 'flex', padding: 1, flexGrow: 1, width: "100%", justifyContent: "space-between" }}>
+    <Stack direction="row" sx={{ display: 'flex', padding: 1, flexGrow: 1, width: "100%", justifyContent: "space-between", alignItems: "center" }}>
       <Stack direction="row" spacing={1}>
+        <IconButton color="primary" onClick={handleAddStudentButtonClick}>
+          <AddCircleIcon fontSize="large" />
+        </IconButton>
+
         <LoadStudentsFileButton>Load</LoadStudentsFileButton>
-        <Button variant='outlined'>Save</Button>
+
+        {/* @ts-ignore */}
+        <Button
+          variant='outlined'
+          href={studentsDataString || undefined}
+          download="students.json"
+        >Save</Button>
+
       </Stack>
+
       <Pagination
         color="primary"
         count={pageCount}
@@ -66,7 +90,7 @@ const CustomNoRowsOverlay = () => (
 
 const Home: NextPage = () => {
   const { students } = useStudentsContext()
-  const elementsPerPage = 10
+  const elementsPerPage = 20
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh', flexGrow: 1 }}>

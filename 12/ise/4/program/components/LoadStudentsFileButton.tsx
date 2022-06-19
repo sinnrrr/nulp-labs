@@ -1,4 +1,4 @@
-import { Alert, Modal, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 import { styled } from '@mui/material/styles'
 import { tableCellClasses } from '@mui/material/TableCell'
 import * as React from 'react'
@@ -32,7 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNode }) => {
   const { setStudents } = useStudentsContext()
   const validationErrors = useRef<z.ZodError | null>(null)
-  const validationModalDisclosure = useDisclosure();
+  const validationDialogDisclosure = useDisclosure();
   const fileEmptyDisclosure = useDisclosure();
   const fileOpenErrorDisclosure = useDisclosure();
   const successSnackbarDisclosure = useDisclosure();
@@ -51,7 +51,7 @@ export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNod
         successSnackbarDisclosure.open()
       }).catch((errors) => {
         validationErrors.current = errors
-        validationModalDisclosure.open()
+        validationDialogDisclosure.open()
       })
   }
 
@@ -90,39 +90,49 @@ export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNod
       </Alert>
     </Snackbar>
 
-    <Modal
-      open={validationModalDisclosure.isOpen}
-      onClose={validationModalDisclosure.close}
+    <Dialog
+      open={validationDialogDisclosure.isOpen}
+      onClose={validationDialogDisclosure.close}
     >
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell sx={{ width: 0 }}>Code</StyledTableCell>
-              <StyledTableCell sx={{ width: 0 }}>Expected</StyledTableCell>
-              <StyledTableCell sx={{ width: 0 }}>Received</StyledTableCell>
-              <StyledTableCell sx={{ width: 0 }}>Element</StyledTableCell>
-              <StyledTableCell sx={{ width: 0 }}>Field</StyledTableCell>
-              <StyledTableCell>Message</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {validationErrors.current?.errors.map((error) => (
-              <StyledTableRow
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <StyledTableCell>{error.code}</StyledTableCell>
-                <StyledTableCell>{(error as any).expected}</StyledTableCell>
-                <StyledTableCell>{(error as any).received}</StyledTableCell>
-                <StyledTableCell>{error.path[0]}</StyledTableCell>
-                <StyledTableCell>{error.path[1]}</StyledTableCell>
-                <StyledTableCell>{error.message}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Modal>
+      <DialogTitle>There is few validation errors</DialogTitle>
+
+      <DialogContent>
+        <TableContainer component={Paper} >
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell sx={{ width: 0 }}>Code</StyledTableCell>
+                <StyledTableCell sx={{ width: 0 }}>Expected</StyledTableCell>
+                <StyledTableCell sx={{ width: 0 }}>Received</StyledTableCell>
+                <StyledTableCell sx={{ width: 0 }}>Element</StyledTableCell>
+                <StyledTableCell sx={{ width: 0 }}>Field</StyledTableCell>
+                <StyledTableCell>Message</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {validationErrors.current?.errors.map((error) => (
+                <StyledTableRow
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <StyledTableCell>{error.code}</StyledTableCell>
+                  <StyledTableCell>{(error as any).expected}</StyledTableCell>
+                  <StyledTableCell>{(error as any).received}</StyledTableCell>
+                  <StyledTableCell>{error.path[0]}</StyledTableCell>
+                  <StyledTableCell>{error.path[1]}</StyledTableCell>
+                  <StyledTableCell>{error.message}</StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </DialogContent>
+
+      <DialogActions>
+        <Button onClick={validationDialogDisclosure.close} autoFocus>
+          Gotcha
+        </Button>
+      </DialogActions>
+    </Dialog>
 
     <LoadDataFileButton onSubmit={onStudentsFileLoaded} onError={onFileOpenError}>{children}</LoadDataFileButton>
   </>)
