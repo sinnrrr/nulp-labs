@@ -6,7 +6,7 @@ import '@fontsource/roboto/700.css';
 import { CssBaseline } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { StudentsContextProvider } from '../contexts/students';
+import { BooksContextProvider } from '../contexts/books';
 import createEmotionCache from '../utils/createEmotionCache';
 import { theme } from '../utils/theme';
 
@@ -26,9 +26,9 @@ function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }: 
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <StudentsContextProvider>
+        <BooksContextProvider>
           <Component {...pageProps} />
-        </StudentsContextProvider>
+        </BooksContextProvider>
       </ThemeProvider>
     </CacheProvider>
   );

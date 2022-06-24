@@ -1,12 +1,11 @@
 import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 import { styled } from '@mui/material/styles'
 import { tableCellClasses } from '@mui/material/TableCell'
-import * as React from 'react'
 import { useRef } from "react"
 import { useDisclosure } from "react-use-disclosure"
 import { z } from "zod"
-import { useStudentsContext } from "../contexts/students"
-import { StudentSchema } from "../schemas/student"
+import { useBooksContext } from "../contexts/books"
+import { FunctionComponent } from "../types"
 import { LoadDataFileButton } from "./LoadDataFileButton"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -29,25 +28,29 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNode }) => {
-  const { setStudents } = useStudentsContext()
+type LoadValidatedFileButtonProps = {
+  schema: z.ZodType
+}
+
+export const LoadValidatedFileButton: FunctionComponent<LoadValidatedFileButtonProps> = ({ children, schema }) => {
+  const { setBooks } = useBooksContext()
   const validationErrors = useRef<z.ZodError | null>(null)
   const validationDialogDisclosure = useDisclosure();
   const fileEmptyDisclosure = useDisclosure();
   const fileOpenErrorDisclosure = useDisclosure();
   const successSnackbarDisclosure = useDisclosure();
 
-  const onStudentsFileLoaded = async (rawStudentsData: string) => {
-    const rawStudents = JSON.parse(rawStudentsData)
+  const onBooksFileLoaded = async (rawBooksData: string) => {
+    const rawBooks = JSON.parse(rawBooksData)
 
-    if (rawStudents.length === 0) {
+    if (rawBooks.length === 0) {
       fileEmptyDisclosure.open()
       return;
     }
 
-    await z.array(StudentSchema).parseAsync(rawStudents)
-      .then((students) => {
-        setStudents(students)
+    await z.array(schema).parseAsync(rawBooks)
+      .then((books) => {
+        setBooks(books)
         successSnackbarDisclosure.open()
       }).catch((errors) => {
         validationErrors.current = errors
@@ -101,24 +104,25 @@ export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNod
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <StyledTableCell sx={{ width: 0 }}>Code</StyledTableCell>
-                <StyledTableCell sx={{ width: 0 }}>Expected</StyledTableCell>
-                <StyledTableCell sx={{ width: 0 }}>Received</StyledTableCell>
+                <StyledTableCell sx={{ width: 0 }}>Type</StyledTableCell>
                 <StyledTableCell sx={{ width: 0 }}>Element</StyledTableCell>
                 <StyledTableCell sx={{ width: 0 }}>Field</StyledTableCell>
+                <StyledTableCell sx={{ width: 0 }}>Expected</StyledTableCell>
+                <StyledTableCell sx={{ width: 0 }}>Received</StyledTableCell>
                 <StyledTableCell>Message</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {validationErrors.current?.errors.map((error) => (
+              {validationErrors.current?.errors.map((error, index) => (
                 <StyledTableRow
+                  key={index}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <StyledTableCell>{error.code}</StyledTableCell>
-                  <StyledTableCell>{(error as any).expected}</StyledTableCell>
-                  <StyledTableCell>{(error as any).received}</StyledTableCell>
                   <StyledTableCell>{error.path[0]}</StyledTableCell>
                   <StyledTableCell>{error.path[1]}</StyledTableCell>
+                  <StyledTableCell>{(error as any).expected}</StyledTableCell>
+                  <StyledTableCell>{(error as any).received}</StyledTableCell>
                   <StyledTableCell>{error.message}</StyledTableCell>
                 </StyledTableRow>
               ))}
@@ -134,6 +138,6 @@ export const LoadStudentsFileButton = ({ children }: { children?: React.ReactNod
       </DialogActions>
     </Dialog>
 
-    <LoadDataFileButton onSubmit={onStudentsFileLoaded} onError={onFileOpenError}>{children}</LoadDataFileButton>
+    <LoadDataFileButton onSubmit={onBooksFileLoaded} onError={onFileOpenError}>{children}</LoadDataFileButton>
   </>)
 }

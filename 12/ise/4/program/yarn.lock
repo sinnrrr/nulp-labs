@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@anatine/zod-mock@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@anatine/zod-mock/-/zod-mock-3.1.1.tgz#b8d194a0ce5ec333be82fb5c33d7fcc13d63e2b8"
+  integrity sha512-1VyuwqjydbfHRsYdTHAFf8jUWyXE/8SRy2VtlXUZys/00x2+04D7GqMZ+KUfCMR/QIRBeZXc5S/s05QwpWJdHQ==
+  dependencies:
+    randexp "^0.5.3"
+
 "@babel/code-frame@^7.0.0":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
@@ -180,6 +187,11 @@
     js-yaml "^4.1.0"
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
+
+"@faker-js/faker@^7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-7.3.0.tgz#a508df35ded585c4e071cb5d9d7c89623c837fae"
+  integrity sha512-1W0PZezq2rxlAssoWemi9gFRD8IQxvf0FPL5Km3TOmGHFG7ib0TbFBJ0yC7D/1NsxunjNTK6WjUXV8ao/mKZ5w==
 
 "@fontsource/roboto@^4.5.5":
   version "4.5.7"
@@ -828,6 +840,11 @@ dom-helpers@^5.0.1:
   dependencies:
     "@babel/runtime" "^7.8.7"
     csstype "^3.0.2"
+
+drange@^1.0.2:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/drange/-/drange-1.1.1.tgz#b2aecec2aab82fcef11dbbd7b9e32b83f8f6c0b8"
+  integrity sha512-pYxfDYpued//QpnLIm4Avk7rsNtAtQkUES2cwAYSvD/wd2pKD71gN2Ebj3e7klzXwjocvE8c5vx/1fxwpqmSxA==
 
 emoji-regex@^9.2.2:
   version "9.2.2"
@@ -1827,6 +1844,14 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+randexp@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/randexp/-/randexp-0.5.3.tgz#f31c2de3148b30bdeb84b7c3f59b0ebb9fec3738"
+  integrity sha512-U+5l2KrcMNOUPYvazA3h5ekF80FHTUG+87SEAmHZmolh1M+i/WyTCxVzmi+tidIa1tM4BSe8g2Y/D3loWDjj+w==
+  dependencies:
+    drange "^1.0.2"
+    ret "^0.2.0"
+
 react-dom@18.1.0:
   version "18.1.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.1.0.tgz#7f6dd84b706408adde05e1df575b3a024d7e8a2f"
@@ -1913,6 +1938,11 @@ resolve@^2.0.0-next.3:
     is-core-module "^2.9.0"
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
+
+ret@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ret/-/ret-0.2.2.tgz#b6861782a1f4762dce43402a71eb7a283f44573c"
+  integrity sha512-M0b3YWQs7R3Z917WRQy1HHA7Ba7D8hvZg6UE5mLykJxQVE2ju0IXbGlaHPPlkY+WN7wFP+wUMXmBFA0aV6vYGQ==
 
 reusify@^1.0.4:
   version "1.0.4"

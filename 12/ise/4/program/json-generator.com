@@ -2,12 +2,10 @@
   '{{repeat(100)}}',
   {
     id: '{{index()}}',
-    firstName: '{{firstName()}}',
-    lastName: '{{surname()}}',
-    birthDate: '{{date()}}',
-    grades: [
-      '{{repeat(6)}}',
-      '{{integer(1, 5)}}'
-    ],
+    author: '{{firstName()}} {{surname()}}',
+    name: '{{firstName()}} {{firstName()}}',
+    price: '{{floating(20, 400)}}',
+    pagesCount: '{{integer(100, 999)}}',
+    publishedAt: '{{date()}}'
   }
 ]

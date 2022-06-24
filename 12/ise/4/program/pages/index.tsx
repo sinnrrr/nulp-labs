@@ -1,53 +1,53 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import { Box, Button, IconButton, Pagination, Stack, Typography } from '@mui/material';
-import { DataGrid, GridColDef, gridPageCountSelector, gridPageSelector, GridValueGetterParams, useGridApiContext, useGridSelector } from '@mui/x-data-grid';
-import { randFirstName, randLastName, randNumber, randPastDate } from '@ngneat/falso';
+import { DataGrid, GridColDef, gridPageCountSelector, gridPageSelector, useGridApiContext, useGridSelector } from '@mui/x-data-grid';
 import type { NextPage } from 'next';
-import { LoadStudentsFileButton } from '../components/LoadStudentsFileButton';
-import { useStudentsContext } from "../contexts/students";
-import { Student } from '../schemas/student';
-import { averageNumber } from '../utils/averageNumber';
-import { excludesOperator } from '../utils/excludesOperator';
-import { includesOperator } from '../utils/includesOperator';
-import { parseField } from '../utils/parseField';
+import { LoadBooksFileButton } from '../components/LoadBooksFileButton';
+import { useBooksContext } from '../contexts/books';
+import { Book, BookSchema } from '../schemas/book';
+import { bookMockData } from '../utils/bookMockData';
+import { FieldParser } from '../utils/fieldParser';
 
-const columns: GridColDef<Student>[] = [
+const fieldParser = FieldParser(BookSchema)
+const columns: GridColDef<Book>[] = [
   {
-    field: 'firstName',
-    headerName: 'First name',
+    field: 'name',
+    headerName: 'Book name',
     editable: true,
-    preProcessEditCellProps: parseField("firstName")
+    width: 150,
+    preProcessEditCellProps: fieldParser("name")
   },
   {
-    field: 'lastName',
-    headerName: 'Last name',
+    field: 'author',
+    headerName: 'Author',
     editable: true,
-    preProcessEditCellProps: parseField("lastName")
+    width: 150,
+    preProcessEditCellProps: fieldParser("author")
   },
   {
-    field: 'grades',
-    headerName: 'Grades',
+    field: 'price',
+    headerName: 'Price',
+    type: 'number',
     editable: true,
-    valueParser: (value, _params) =>
-      value?.split(',').map((v: string) => v ? parseInt(v) : ''),
-    filterOperators: [includesOperator, excludesOperator],
-    preProcessEditCellProps: parseField("grades"),
+    preProcessEditCellProps: fieldParser("price")
   },
   {
-    field: 'gradesAverage',
-    headerName: 'Average grade',
-    valueGetter: (params: GridValueGetterParams) => averageNumber(params.row.grades).toFixed(2),
+    field: 'pagesCount',
+    headerName: 'Pages',
+    type: 'number',
+    editable: true,
+    preProcessEditCellProps: fieldParser("pagesCount")
   },
   {
-    field: 'birthDate',
-    headerName: 'Birth date',
+    field: 'publishedAt',
+    headerName: 'Publish date',
+    type: 'date',
     width: 230,
     editable: true,
-    type: 'date',
-    preProcessEditCellProps: parseField("birthDate"),
-    valueGetter: (params) => new Date(params.row.birthDate),
-    valueFormatter: (params) => params.value.toUTCString(),
+    preProcessEditCellProps: fieldParser("publishedAt"),
+    valueParser: (value: Date) => value.toUTCString(),
+    valueGetter: (params) => new Date(Date.parse(params.value)),
   },
 ];
 
@@ -55,16 +55,10 @@ const CustomPagination = () => {
   const apiRef = useGridApiContext();
   const page = useGridSelector(apiRef, gridPageSelector);
   const pageCount = useGridSelector(apiRef, gridPageCountSelector);
-  const { studentsDataString, addStudent } = useStudentsContext()
+  const { booksDataString, addBook } = useBooksContext()
 
-  const handleAddStudentButtonClick = () => {
-    addStudent({
-      id: randNumber(),
-      firstName: randFirstName(),
-      lastName: randLastName(),
-      grades: randNumber({ min: 1, max: 5, length: 6 }),
-      birthDate: +randPastDate()
-    })
+  const handleAddBookButtonClick = () => {
+    addBook(bookMockData())
   }
 
   const hasRows = apiRef.current.getRowsCount() > 0
@@ -73,17 +67,17 @@ const CustomPagination = () => {
   return (
     <Stack direction="row" sx={{ display: 'flex', padding: 1, flexGrow: 1, width: "100%", justifyContent: "space-between", alignItems: "center" }}>
       <Stack direction="row" spacing={1}>
-        <IconButton color="primary" onClick={handleAddStudentButtonClick}>
+        <IconButton color="primary" onClick={handleAddBookButtonClick}>
           <AddCircleIcon fontSize="large" />
         </IconButton>
 
-        <LoadStudentsFileButton>Load</LoadStudentsFileButton>
+        <LoadBooksFileButton>Load</LoadBooksFileButton>
 
         {/* @ts-ignore */}
         <Button
           variant='outlined'
-          href={studentsDataString || undefined}
-          download="students.json"
+          href={booksDataString || undefined}
+          download="books.json"
         >Save</Button>
 
       </Stack>
@@ -103,13 +97,13 @@ const CustomNoRowsOverlay = () => (
     <DocumentScannerIcon sx={{ width: { xs: "20%", sm: "15%", md: "10%" }, height: "auto" }} />
     <Typography>No data provided</Typography>
     <Stack direction="row">
-      <LoadStudentsFileButton>Load data</LoadStudentsFileButton>
+      <LoadBooksFileButton>Load data</LoadBooksFileButton>
     </Stack>
   </Stack>
 )
 
 const Home: NextPage = () => {
-  const { students, setStudents } = useStudentsContext()
+  const { books, setBooks } = useBooksContext()
   const elementsPerPage = 20
 
   return (
@@ -117,16 +111,16 @@ const Home: NextPage = () => {
       <Box sx={{ display: 'flex', flexGrow: 1, width: "100%" }}>
         <DataGrid
           experimentalFeatures={{ newEditingApi: true }}
-          rows={students || []}
+          rows={books || []}
           columns={columns}
           pageSize={elementsPerPage}
           rowsPerPageOptions={[elementsPerPage]}
           processRowUpdate={(data) => {
-            const studentsCopy = [...students || []]
-            const changedStudentIndex = studentsCopy.findIndex((el) => el.id === data.id)
+            const booksCopy = [...books || []]
+            const changedBookIndex = booksCopy.findIndex((el) => el.id === data.id)
 
-            studentsCopy[changedStudentIndex] = data
-            setStudents(studentsCopy)
+            booksCopy[changedBookIndex] = data
+            setBooks(booksCopy)
 
             return data
           }}
