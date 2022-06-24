@@ -31,6 +31,7 @@ class Пасажир {
 
 class Прибуток {
   +amount: Number
+  +calculate_income(Пасажир)
 }
 
 abstract class Працівник {
