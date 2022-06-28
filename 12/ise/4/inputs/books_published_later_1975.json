@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "author": "Eddie Dotson",
+    "name": "Doris Eugenia",
+    "price": 246.5688,
+    "pagesCount": 478,
+    "publishedAt": "Tue Jun 09 1976 09:56:06 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 1,
+    "author": "Alba Thompson",
+    "name": "Montoya Boyer",
+    "price": 398.244,
+    "pagesCount": 218,
+    "publishedAt": "Mon Jul 21 1999 07:14:23 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 2,
+    "author": "Alyson Stokes",
+    "name": "Colon Farley",
+    "price": 192.289,
+    "pagesCount": 230,
+    "publishedAt": "Thu Mar 28 2014 23:22:49 GMT+0100 (Central European Standard Time)"
+  }
+]

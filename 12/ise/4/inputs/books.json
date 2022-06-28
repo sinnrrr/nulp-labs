@@ -1,0 +1,802 @@
+[
+  {
+    "id": 0,
+    "author": "Eddie Dotson",
+    "name": "Doris Eugenia",
+    "price": 246.5688,
+    "pagesCount": 478,
+    "publishedAt": "Tue Jun 09 1992 09:56:06 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 1,
+    "author": "Alba Thompson",
+    "name": "Montoya Boyer",
+    "price": 398.244,
+    "pagesCount": 218,
+    "publishedAt": "Mon Jul 21 1980 07:14:23 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 2,
+    "author": "Alyson Stokes",
+    "name": "Colon Farley",
+    "price": 192.289,
+    "pagesCount": 230,
+    "publishedAt": "Thu Mar 28 1985 23:22:49 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 3,
+    "author": "Jeannette Burks",
+    "name": "Estes Florence",
+    "price": 221.1679,
+    "pagesCount": 676,
+    "publishedAt": "Sun May 30 1982 07:42:13 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 4,
+    "author": "Joanna Patton",
+    "name": "Graciela Brooks",
+    "price": 65.821,
+    "pagesCount": 470,
+    "publishedAt": "Mon Mar 29 2004 19:02:22 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 5,
+    "author": "Miles Lester",
+    "name": "Vasquez Lilian",
+    "price": 263.2705,
+    "pagesCount": 941,
+    "publishedAt": "Tue Sep 18 2001 00:52:58 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 6,
+    "author": "Mcconnell Pittman",
+    "name": "Snyder Robles",
+    "price": 131.9336,
+    "pagesCount": 653,
+    "publishedAt": "Tue Oct 23 1984 13:04:59 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 7,
+    "author": "Rasmussen Sullivan",
+    "name": "Holder Dawn",
+    "price": 123.793,
+    "pagesCount": 134,
+    "publishedAt": "Sun Jun 17 1984 00:16:01 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 8,
+    "author": "Whitfield Osborne",
+    "name": "Spencer Joanne",
+    "price": 161.934,
+    "pagesCount": 258,
+    "publishedAt": "Tue Aug 15 1989 00:59:23 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 9,
+    "author": "Vance Austin",
+    "name": "Gwendolyn Franco",
+    "price": 399.7052,
+    "pagesCount": 567,
+    "publishedAt": "Tue Nov 22 2016 08:28:11 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 10,
+    "author": "Ingram Wilson",
+    "name": "Latisha Goodwin",
+    "price": 251.0724,
+    "pagesCount": 109,
+    "publishedAt": "Mon Dec 01 1986 06:32:29 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 11,
+    "author": "Brigitte Crosby",
+    "name": "Marla Livingston",
+    "price": 143.1491,
+    "pagesCount": 305,
+    "publishedAt": "Sat Apr 15 1972 12:50:58 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 12,
+    "author": "Mejia Christensen",
+    "name": "Ophelia Hunter",
+    "price": 243.7999,
+    "pagesCount": 300,
+    "publishedAt": "Thu Dec 30 2021 22:44:41 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 13,
+    "author": "Natasha Prince",
+    "name": "Brooke Frankie",
+    "price": 360.9119,
+    "pagesCount": 228,
+    "publishedAt": "Wed Feb 07 1973 16:51:16 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 14,
+    "author": "Guadalupe Carey",
+    "name": "Gilbert Thelma",
+    "price": 250.689,
+    "pagesCount": 351,
+    "publishedAt": "Mon Feb 23 1970 06:20:30 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 15,
+    "author": "Rowena Strong",
+    "name": "Pollard Beck",
+    "price": 181.2191,
+    "pagesCount": 754,
+    "publishedAt": "Mon Jul 05 1971 11:57:12 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 16,
+    "author": "Adela Flowers",
+    "name": "Arline Maryellen",
+    "price": 51.4112,
+    "pagesCount": 384,
+    "publishedAt": "Fri Jul 25 1986 15:24:52 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 17,
+    "author": "Noemi Rivera",
+    "name": "Clark Cecile",
+    "price": 112.6278,
+    "pagesCount": 551,
+    "publishedAt": "Sat Sep 07 2002 20:10:21 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 18,
+    "author": "Trevino Howe",
+    "name": "Reilly Barrera",
+    "price": 351.0286,
+    "pagesCount": 937,
+    "publishedAt": "Sun Dec 19 1971 11:45:12 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 19,
+    "author": "Mcclure Bowman",
+    "name": "Randolph Ballard",
+    "price": 238.615,
+    "pagesCount": 712,
+    "publishedAt": "Wed Feb 06 2002 19:43:18 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 20,
+    "author": "Wall Gamble",
+    "name": "Lupe Sullivan",
+    "price": 110.5622,
+    "pagesCount": 784,
+    "publishedAt": "Wed Dec 04 1991 01:23:09 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 21,
+    "author": "Wilder Vinson",
+    "name": "Stacey Rosales",
+    "price": 46.954,
+    "pagesCount": 741,
+    "publishedAt": "Tue Mar 06 2001 10:14:38 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 22,
+    "author": "Lambert Lyons",
+    "name": "Beth Jeri",
+    "price": 269.7421,
+    "pagesCount": 108,
+    "publishedAt": "Fri Aug 12 2005 02:27:56 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 23,
+    "author": "Crawford Michael",
+    "name": "Dickerson Sarah",
+    "price": 244.5394,
+    "pagesCount": 771,
+    "publishedAt": "Mon Nov 10 2014 01:50:04 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 24,
+    "author": "Haley Henderson",
+    "name": "Nieves Ortega",
+    "price": 158.3658,
+    "pagesCount": 454,
+    "publishedAt": "Sat Nov 28 1981 16:18:14 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 25,
+    "author": "Brandi Burgess",
+    "name": "Perkins Hillary",
+    "price": 298.3791,
+    "pagesCount": 617,
+    "publishedAt": "Sat Mar 13 1982 06:01:25 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 26,
+    "author": "Harrell Williams",
+    "name": "Ferrell Fuller",
+    "price": 233.2778,
+    "pagesCount": 364,
+    "publishedAt": "Sun Dec 21 1975 20:32:02 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 27,
+    "author": "Delaney Mcdaniel",
+    "name": "Therese Maldonado",
+    "price": 115.6958,
+    "pagesCount": 578,
+    "publishedAt": "Sun Aug 26 2007 08:59:57 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 28,
+    "author": "Kirsten Lynch",
+    "name": "Fuentes Byrd",
+    "price": 249.4684,
+    "pagesCount": 281,
+    "publishedAt": "Tue Nov 02 1976 10:00:23 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 29,
+    "author": "Harding Campbell",
+    "name": "Lina Tammi",
+    "price": 232.5385,
+    "pagesCount": 820,
+    "publishedAt": "Sat Sep 09 2006 07:57:35 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 30,
+    "author": "Cheri Wolf",
+    "name": "Mollie Giles",
+    "price": 313.9195,
+    "pagesCount": 813,
+    "publishedAt": "Sat Dec 20 2003 11:48:36 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 31,
+    "author": "Foreman Coleman",
+    "name": "Salazar Cain",
+    "price": 62.2125,
+    "pagesCount": 191,
+    "publishedAt": "Mon Aug 13 2001 16:50:33 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 32,
+    "author": "Antonia Jones",
+    "name": "Kathleen Etta",
+    "price": 153.5456,
+    "pagesCount": 762,
+    "publishedAt": "Fri Mar 11 2016 09:23:02 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 33,
+    "author": "Estelle Figueroa",
+    "name": "Bettye Laurie",
+    "price": 392.8598,
+    "pagesCount": 893,
+    "publishedAt": "Sat Jan 27 1973 07:00:13 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 34,
+    "author": "Jamie Rowland",
+    "name": "Patricia Gracie",
+    "price": 359.9919,
+    "pagesCount": 167,
+    "publishedAt": "Wed Oct 06 2010 22:15:03 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 35,
+    "author": "French Hughes",
+    "name": "Harris Tonia",
+    "price": 38.6046,
+    "pagesCount": 362,
+    "publishedAt": "Thu Apr 09 2020 21:36:41 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 36,
+    "author": "Lamb Schwartz",
+    "name": "Terry Angelita",
+    "price": 330.5097,
+    "pagesCount": 845,
+    "publishedAt": "Fri May 30 1997 05:54:11 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 37,
+    "author": "Elena Perry",
+    "name": "Stanton June",
+    "price": 356.5907,
+    "pagesCount": 494,
+    "publishedAt": "Tue Aug 09 2016 01:59:25 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 38,
+    "author": "Sharron Maddox",
+    "name": "Harmon Hood",
+    "price": 281.7126,
+    "pagesCount": 445,
+    "publishedAt": "Tue Apr 21 2020 10:14:37 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 39,
+    "author": "Concetta Long",
+    "name": "Lorrie Brown",
+    "price": 376.462,
+    "pagesCount": 622,
+    "publishedAt": "Mon Jul 31 1972 14:23:40 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 40,
+    "author": "Madeleine Clemons",
+    "name": "Lora Shannon",
+    "price": 203.5019,
+    "pagesCount": 328,
+    "publishedAt": "Tue May 05 1981 00:20:26 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 41,
+    "author": "Carole Castaneda",
+    "name": "Lana Bonnie",
+    "price": 299.1186,
+    "pagesCount": 933,
+    "publishedAt": "Tue Sep 19 1995 22:22:16 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 42,
+    "author": "David Brewer",
+    "name": "Stevens Shelby",
+    "price": 370.5077,
+    "pagesCount": 409,
+    "publishedAt": "Tue Feb 21 1995 13:15:49 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 43,
+    "author": "Taylor Freeman",
+    "name": "Carrie Craig",
+    "price": 128.3671,
+    "pagesCount": 368,
+    "publishedAt": "Mon Apr 25 1983 21:58:07 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 44,
+    "author": "Jacobs West",
+    "name": "Rosalyn Loraine",
+    "price": 128.5188,
+    "pagesCount": 653,
+    "publishedAt": "Thu Mar 23 1972 04:08:53 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 45,
+    "author": "Maureen Mcintyre",
+    "name": "Woodward Talley",
+    "price": 37.4547,
+    "pagesCount": 754,
+    "publishedAt": "Mon Jun 03 1985 16:50:47 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 46,
+    "author": "Valeria Fisher",
+    "name": "Tate Whitehead",
+    "price": 346.208,
+    "pagesCount": 902,
+    "publishedAt": "Tue Aug 21 1984 20:25:06 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 47,
+    "author": "Lorena Ingram",
+    "name": "Andrea Becky",
+    "price": 169.2833,
+    "pagesCount": 278,
+    "publishedAt": "Mon May 26 1975 14:34:38 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 48,
+    "author": "Alyce Manning",
+    "name": "Daisy Vonda",
+    "price": 280.9564,
+    "pagesCount": 578,
+    "publishedAt": "Mon Nov 25 1985 17:14:29 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 49,
+    "author": "Kaitlin Berry",
+    "name": "Noreen Frazier",
+    "price": 251.9727,
+    "pagesCount": 978,
+    "publishedAt": "Sat Aug 22 1998 23:02:36 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 50,
+    "author": "Dorothy Head",
+    "name": "Priscilla Juliette",
+    "price": 46.3263,
+    "pagesCount": 101,
+    "publishedAt": "Fri Nov 02 1984 02:14:24 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 51,
+    "author": "Paige Puckett",
+    "name": "Evangeline Lois",
+    "price": 375.1595,
+    "pagesCount": 285,
+    "publishedAt": "Sun Feb 04 2007 08:16:22 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 52,
+    "author": "Franks Snow",
+    "name": "Norman Marissa",
+    "price": 243.9022,
+    "pagesCount": 297,
+    "publishedAt": "Wed Nov 29 2017 07:50:19 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 53,
+    "author": "House Benjamin",
+    "name": "Rosalind Eileen",
+    "price": 90.4106,
+    "pagesCount": 682,
+    "publishedAt": "Thu Dec 22 1983 15:38:47 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 54,
+    "author": "Porter Dorsey",
+    "name": "Tia Vazquez",
+    "price": 37.2751,
+    "pagesCount": 217,
+    "publishedAt": "Fri Oct 13 1972 02:38:40 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 55,
+    "author": "Rosemarie Barton",
+    "name": "Soto Kidd",
+    "price": 164.9408,
+    "pagesCount": 293,
+    "publishedAt": "Mon Mar 16 2009 08:05:34 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 56,
+    "author": "Minnie Gillespie",
+    "name": "Burns Kay",
+    "price": 126.1542,
+    "pagesCount": 449,
+    "publishedAt": "Fri May 28 1976 04:30:23 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 57,
+    "author": "Fay Molina",
+    "name": "Hale Viola",
+    "price": 33.5778,
+    "pagesCount": 109,
+    "publishedAt": "Mon Jun 03 2002 14:38:50 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 58,
+    "author": "Kelly Dawson",
+    "name": "Flynn Cortez",
+    "price": 136.2014,
+    "pagesCount": 400,
+    "publishedAt": "Mon Feb 03 1992 13:54:54 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 59,
+    "author": "Esmeralda Koch",
+    "name": "Norton Monroe",
+    "price": 310.2364,
+    "pagesCount": 575,
+    "publishedAt": "Thu Jan 03 1985 00:47:47 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 60,
+    "author": "Potter Henson",
+    "name": "Penny Roman",
+    "price": 78.5779,
+    "pagesCount": 971,
+    "publishedAt": "Sun Dec 23 1990 23:01:13 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 61,
+    "author": "Ola Baxter",
+    "name": "Bette Stacy",
+    "price": 367.1406,
+    "pagesCount": 854,
+    "publishedAt": "Wed Sep 09 1998 01:59:37 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 62,
+    "author": "Cleo Alexander",
+    "name": "Boyle Booker",
+    "price": 340.9074,
+    "pagesCount": 793,
+    "publishedAt": "Sat Jul 05 2003 05:26:11 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 63,
+    "author": "Dunn Richardson",
+    "name": "Stevenson Lindsey",
+    "price": 126.4139,
+    "pagesCount": 112,
+    "publishedAt": "Tue Jun 06 2000 16:46:23 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 64,
+    "author": "Wilson Simmons",
+    "name": "Villarreal Chris",
+    "price": 289.8948,
+    "pagesCount": 676,
+    "publishedAt": "Sun Mar 13 2016 16:59:15 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 65,
+    "author": "Adriana Ayers",
+    "name": "Cruz Collins",
+    "price": 379.8147,
+    "pagesCount": 494,
+    "publishedAt": "Wed May 12 1993 13:29:12 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 66,
+    "author": "Cervantes Greene",
+    "name": "Alice Henderson",
+    "price": 145.3976,
+    "pagesCount": 299,
+    "publishedAt": "Tue Jan 29 2002 03:50:39 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 67,
+    "author": "Hughes Hendrix",
+    "name": "Juliet Daphne",
+    "price": 266.5405,
+    "pagesCount": 352,
+    "publishedAt": "Thu Apr 30 2020 12:59:31 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 68,
+    "author": "Rosella Guy",
+    "name": "Baldwin Stephenson",
+    "price": 399.1493,
+    "pagesCount": 157,
+    "publishedAt": "Wed May 14 1980 15:47:09 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 69,
+    "author": "Whitley Irwin",
+    "name": "Aileen Shari",
+    "price": 373.6408,
+    "pagesCount": 845,
+    "publishedAt": "Sat May 30 2020 15:25:30 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 70,
+    "author": "Augusta Booker",
+    "name": "Kaufman Mays",
+    "price": 377.7163,
+    "pagesCount": 535,
+    "publishedAt": "Thu Apr 10 2008 07:39:20 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 71,
+    "author": "Yolanda Carver",
+    "name": "Mathis Amber",
+    "price": 249.1252,
+    "pagesCount": 726,
+    "publishedAt": "Tue Dec 12 1978 23:21:09 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 72,
+    "author": "Maryann Fields",
+    "name": "Gross Ross",
+    "price": 298.6278,
+    "pagesCount": 262,
+    "publishedAt": "Tue Nov 11 1997 01:50:05 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 73,
+    "author": "Edwards Gregory",
+    "name": "Carmella Cleveland",
+    "price": 365.2005,
+    "pagesCount": 431,
+    "publishedAt": "Sat Oct 18 2003 13:28:21 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 74,
+    "author": "Mable Cooley",
+    "name": "Hess Kristen",
+    "price": 364.1613,
+    "pagesCount": 509,
+    "publishedAt": "Tue Apr 01 2008 23:52:32 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 75,
+    "author": "West Morin",
+    "name": "Foley Caroline",
+    "price": 137.7879,
+    "pagesCount": 698,
+    "publishedAt": "Wed Jul 25 2018 04:04:25 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 76,
+    "author": "Carmela Savage",
+    "name": "Greer Murphy",
+    "price": 165.7772,
+    "pagesCount": 216,
+    "publishedAt": "Mon Dec 15 1975 18:38:10 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 77,
+    "author": "Karin Simpson",
+    "name": "Aurelia Rae",
+    "price": 109.4769,
+    "pagesCount": 586,
+    "publishedAt": "Sat Apr 30 2011 17:00:12 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 78,
+    "author": "Lourdes Bender",
+    "name": "Wilda Drake",
+    "price": 304.1214,
+    "pagesCount": 733,
+    "publishedAt": "Wed Aug 02 1989 22:24:25 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 79,
+    "author": "Jenkins England",
+    "name": "Roy Schultz",
+    "price": 76.1828,
+    "pagesCount": 764,
+    "publishedAt": "Thu Jan 10 2002 05:17:20 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 80,
+    "author": "Irene Moon",
+    "name": "Helena Valencia",
+    "price": 226.8459,
+    "pagesCount": 658,
+    "publishedAt": "Tue May 28 2013 14:52:45 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 81,
+    "author": "Lynn Nielsen",
+    "name": "Olga Osborne",
+    "price": 53.5431,
+    "pagesCount": 696,
+    "publishedAt": "Mon Mar 08 2004 02:20:49 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 82,
+    "author": "Jackie Mcintosh",
+    "name": "Goldie Schroeder",
+    "price": 110.8883,
+    "pagesCount": 683,
+    "publishedAt": "Thu May 29 1997 07:56:48 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 83,
+    "author": "Sasha Downs",
+    "name": "Morgan Yvette",
+    "price": 208.976,
+    "pagesCount": 828,
+    "publishedAt": "Thu Apr 14 1988 01:28:18 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 84,
+    "author": "Candice Stevenson",
+    "name": "Laurel Jefferson",
+    "price": 166.891,
+    "pagesCount": 839,
+    "publishedAt": "Mon Mar 25 2013 02:28:08 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 85,
+    "author": "Alta Lang",
+    "name": "Alissa Graham",
+    "price": 288.0458,
+    "pagesCount": 414,
+    "publishedAt": "Sat May 11 1996 05:47:04 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 86,
+    "author": "Vicky Nieves",
+    "name": "Shannon Sharpe",
+    "price": 143.6656,
+    "pagesCount": 880,
+    "publishedAt": "Fri Sep 02 2005 19:39:37 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 87,
+    "author": "Rhodes Petersen",
+    "name": "Jacqueline Vincent",
+    "price": 322.1706,
+    "pagesCount": 265,
+    "publishedAt": "Thu Jul 08 1976 15:53:10 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 88,
+    "author": "Houston Valentine",
+    "name": "Gonzales Hyde",
+    "price": 225.4307,
+    "pagesCount": 575,
+    "publishedAt": "Tue Jul 17 1990 23:36:02 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 89,
+    "author": "Carey Avila",
+    "name": "Shanna Tasha",
+    "price": 388.109,
+    "pagesCount": 822,
+    "publishedAt": "Mon Sep 28 1992 04:32:50 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 90,
+    "author": "Burris Higgins",
+    "name": "Rene Alfreda",
+    "price": 219.9471,
+    "pagesCount": 920,
+    "publishedAt": "Sun Mar 29 2009 09:59:54 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 91,
+    "author": "Silva Knight",
+    "name": "Ronda Darlene",
+    "price": 163.3572,
+    "pagesCount": 273,
+    "publishedAt": "Sat Apr 15 1995 01:42:58 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 92,
+    "author": "Horn Mckenzie",
+    "name": "Erika Yang",
+    "price": 245.4594,
+    "pagesCount": 821,
+    "publishedAt": "Thu Feb 28 2002 10:40:11 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 93,
+    "author": "Goff Park",
+    "name": "Noel Ratliff",
+    "price": 182.1873,
+    "pagesCount": 523,
+    "publishedAt": "Mon Oct 03 1988 16:07:12 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 94,
+    "author": "Weiss Olson",
+    "name": "Poole Robbie",
+    "price": 253.9048,
+    "pagesCount": 539,
+    "publishedAt": "Wed Feb 14 1990 21:49:33 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 95,
+    "author": "Bray Gutierrez",
+    "name": "Levy Ella",
+    "price": 74.1666,
+    "pagesCount": 127,
+    "publishedAt": "Thu Jan 17 2008 23:05:14 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 96,
+    "author": "Caldwell Rice",
+    "name": "Finley Branch",
+    "price": 230.8353,
+    "pagesCount": 362,
+    "publishedAt": "Mon Feb 08 2016 00:49:01 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 97,
+    "author": "Kristy Lawson",
+    "name": "Elvia Flores",
+    "price": 177.6767,
+    "pagesCount": 686,
+    "publishedAt": "Sun Jan 06 2013 00:33:15 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 98,
+    "author": "Farrell Padilla",
+    "name": "Silvia Althea",
+    "price": 181.8459,
+    "pagesCount": 552,
+    "publishedAt": "Wed Aug 25 2004 16:58:11 GMT+0200 (Central European Summer Time)"
+  },
+  {
+    "id": 99,
+    "author": "Crane Raymond",
+    "name": "Berg Traci",
+    "price": 363.0975,
+    "pagesCount": 139,
+    "publishedAt": "Sun Oct 11 1998 10:26:22 GMT+0200 (Central European Summer Time)"
+  }
+]

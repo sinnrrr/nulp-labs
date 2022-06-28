@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "author": "Eddie Dotson",
+    "name": "Doris Eugenia",
+    "price": 246.5688,
+    "pagesCount": 478
+  },
+  {
+    "id": 1,
+    "author": "Alba Thompson",
+    "name": "Montoya Boyer",
+    "price": 398.244,
+    "pagesCount": 218
+  },
+  {
+    "id": 2,
+    "author": "Alyson Stokes",
+    "name": "Colon Farley",
+    "price": 192.289,
+    "pagesCount": 230
+  }
+]

@@ -1,0 +1,44 @@
+Start;
+
+Show table with books;
+
+before_user_action_selected:
+switch (User action) {
+ Save => {
+   Save books to JSON file;
+   loop before_user_action_selected;
+ }
+ Add => {
+   Add book to books list;
+   loop before_user_action_selected;
+ }
+ Sort => {
+   Sort books list;
+   loop before_user_action_selected;
+ }
+ Filter => switch (Filter function) {
+    => { 
+      Published older 1975 year;
+      loop before_user_action_selected;
+    };
+    => { 
+      Published within last 50 years; 
+      loop before_user_action_selected;
+    };
+    => loop before_user_action_selected;
+ }
+ Edit => {
+    Edit selected book;
+    loop before_user_action_selected;
+ }
+ Read => {
+    if (Success) {
+      Display data as a list;
+      loop before_user_action_selected;
+    } else {
+      Show validation errors;
+      loop before_user_action_selected;
+    };
+ };
+ Close => End;
+}

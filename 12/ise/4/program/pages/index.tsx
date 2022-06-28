@@ -172,6 +172,8 @@ const Home: NextPage = () => {
   const { filteredBooks, books, setBooks } = useBooksContext();
   const elementsPerPage = 20;
 
+  console.log(filteredBooks || books || []);
+
   return (
     <Box sx={{ display: "flex", minHeight: "100vh", flexGrow: 1 }}>
       <Box sx={{ display: "flex", flexGrow: 1, width: "100%" }}>
@@ -182,7 +184,7 @@ const Home: NextPage = () => {
           pageSize={elementsPerPage}
           rowsPerPageOptions={[elementsPerPage]}
           processRowUpdate={(data) => {
-            const booksCopy = [...(filteredBooks || [])];
+            const booksCopy = [...(books || [])];
             const changedBookIndex = booksCopy.findIndex(
               (el) => el.id === data.id
             );

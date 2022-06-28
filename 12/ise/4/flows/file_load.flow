@@ -1,0 +1,20 @@
+Start;
+
+books = \[\]
+fileName = "books.json"
+
+
+if (fileName.endsWith(".json")) {
+  Open file in program;
+  Validate file for errors;
+  
+  if (validationErrors) {
+    Display file not valid error;
+  } else {
+    books = input
+  }
+} else {
+  Display file not valid error;
+}
+
+End;

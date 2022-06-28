@@ -1,0 +1,42 @@
+A;
+
+before_user_action_selected:
+switch (B) {
+ Save => {
+   C;
+   loop before_user_action_selected;
+ }
+ Add => {
+   D;
+   loop before_user_action_selected;
+ }
+ Sort => {
+   E;
+   loop before_user_action_selected;
+ }
+ Filter => switch (F) {
+    => { 
+      G;
+      loop before_user_action_selected;
+    };
+    => { 
+      H; 
+      loop before_user_action_selected;
+    };
+    => loop before_user_action_selected;
+ }
+ Edit => {
+    D;
+    loop before_user_action_selected;
+ }
+ Read => {
+    if (J) {
+      K;
+      loop before_user_action_selected;
+    } else {
+      L;
+      loop before_user_action_selected;
+    };
+ };
+ Close => I;
+}

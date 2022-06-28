@@ -1,0 +1,11 @@
+Start;
+
+filteredBooks = \[\]
+
+for (int i = 0; i < books.length; i++) {
+  if (books[i].year < 1975) {
+    Add to filtered books;
+  }
+}
+
+End;
