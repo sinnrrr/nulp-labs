@@ -32,8 +32,14 @@ public:
 
 class System {
 public:
-  Human *people;
-  Plane *planes;
-  Income income;
+  Human **people; // array of pointers - aggregation
+  Plane **planes; // array of pointers - aggregation
+  Income income;  // object - composition
   string location;
+
+  System(Human **people, Plane **planes) {
+    this->people = people;
+    this->planes = planes;
+    this->income = Income();
+  }
 };
