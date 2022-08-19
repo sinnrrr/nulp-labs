@@ -104,14 +104,6 @@
     "publishedAt": "Thu Dec 30 2021 22:44:41 GMT+0100 (Central European Standard Time)"
   },
   {
-    "id": 13,
-    "author": "Natasha Prince",
-    "name": "Brooke Frankie",
-    "price": 360.9119,
-    "pagesCount": 228,
-    "publishedAt": "Wed Feb 07 1973 16:51:16 GMT+0100 (Central European Standard Time)"
-  },
-  {
     "id": 14,
     "author": "Guadalupe Carey",
     "name": "Gilbert Thelma",
@@ -262,14 +254,6 @@
     "price": 153.5456,
     "pagesCount": 762,
     "publishedAt": "Fri Mar 11 2016 09:23:02 GMT+0100 (Central European Standard Time)"
-  },
-  {
-    "id": 33,
-    "author": "Estelle Figueroa",
-    "name": "Bettye Laurie",
-    "price": 392.8598,
-    "pagesCount": 893,
-    "publishedAt": "Sat Jan 27 1973 07:00:13 GMT+0100 (Central European Standard Time)"
   },
   {
     "id": 34,
