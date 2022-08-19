@@ -1,5 +1,7 @@
-<img src="nulp_logo.jpeg" alt="Логотип НУЛП" height="200"/>
-<img src="ikni_logo.jpeg" alt="Логотип ІКНІ" height="200"/>
+<p float="left">
+  <img src="nulp_logo.jpeg" alt="Логотип НУЛП" height="200"/>
+  <img src="ikni_logo.jpeg" alt="Логотип ІКНІ" height="200"/>
+</p>
 
 # Лабки для НУ "Львівська Бебротехніка"
 
