@@ -15,9 +15,9 @@
 
 ### 2021
 
-- [Обʼєктно-орієнтоване програмування](2021/obobject_oriented_programming)
+- [Обʼєктно-орієнтоване програмування](2021/object_oriented_programming)
 - [Вступ до інженерії програмного забезпечення](2021/intro_to_software_engineering)
-- [Чисельні методи](2021/nunumerical_analysis)
+- [Чисельні методи](2021/numerical_analysis)
 - [Фізика](2021/physics)
 
 ### 2022
