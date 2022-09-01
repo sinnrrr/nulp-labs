@@ -61,6 +61,7 @@ def display_window(arr: list[int], n: int, gen, interval: int = DEFAULT_SPEED):
             rec.set_height(val)
         epochs[0] += 1
         text.set_text("Operations count :{}".format(epochs[0]))
+        print(array)
 
     _ = anim.FuncAnimation(fig,
                            func=update_plot,
@@ -76,6 +77,8 @@ if __name__ == "__main__":
     n = ask_for_array_size()
     selected_algo_idx = ask_for_algo(algo_options)
     speed = ask_for_speed(speed_options)
+
+    print("\n")
 
     title, algorithm, generator, comparator = algo_options[selected_algo_idx]
     arr = generator(n)
