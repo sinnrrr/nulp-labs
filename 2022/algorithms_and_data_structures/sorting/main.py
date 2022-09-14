@@ -2,6 +2,7 @@ import matplotlib.animation as anim
 import matplotlib.pyplot as plt
 
 from sorting.config import (
+    BAR_COLOR,
     DEFAULT_ARR_ELEMENTS_COUNT,
     DEFAULT_SPEED,
     algo_options,
@@ -61,7 +62,7 @@ def display_window(arr, n: int, gen, interval: int = DEFAULT_SPEED):
 
     ax.set_title(title)
 
-    bar_rec = ax.bar(range(len(arr)), arr, align="edge")
+    bar_rec = ax.bar(range(len(arr)), arr, align="edge", color=BAR_COLOR)
 
     ax.set_xlim(0, n)
     ax.set_ylim(min(arr), max(arr) * 1.2)

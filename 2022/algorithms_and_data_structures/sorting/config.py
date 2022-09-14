@@ -1,5 +1,6 @@
 from sorting.algorithms.bubble_sort import bubble_sort
 from sorting.algorithms.count_sort import count_sort
+
 # from sorting.heap_sort import heap_sort
 # from sorting.insertion_sort import insertion_sort
 from sorting.algorithms.merge_sort import merge_sort
@@ -20,12 +21,8 @@ algo_options = [
     # ("Heap sort", heap_sort),
 ]
 
-speed_options = {
-    "Slow": 1000,
-    "Normal": 500,
-    "Fast": 50,
-    "BLAZINGLY FAST!!!": 1
-}
+speed_options = {"Slow": 1000, "Normal": 500, "Fast": 50, "BLAZINGLY FAST!!!": 1}
 
 DEFAULT_ARR_ELEMENTS_COUNT = 10
 DEFAULT_SPEED = speed_options["Normal"]
+BAR_COLOR = "#B195D2"
