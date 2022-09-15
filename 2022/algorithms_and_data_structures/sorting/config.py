@@ -13,10 +13,10 @@ from sorting.utils import Comparator
 algo_options = [
     ("Bubble sort", bubble_sort, gen_1, Comparator.asc),
     ("Selection sort", selection_sort, gen_2, Comparator.desc),
-    ("Shell sort", shell_sort, gen_3, Comparator.asc),
-    ("Quick sort", quick_sort, gen_4, Comparator.alphbtcl),
-    ("Merge sort", merge_sort, gen_5, Comparator.asc),
-    ("Count sort", count_sort, gen_6, Comparator.asc),
+    # ("Shell sort", shell_sort, gen_3, Comparator.asc),
+    # ("Quick sort", quick_sort, gen_4, Comparator.alphbtcl),
+    # ("Merge sort", merge_sort, gen_5, Comparator.asc),
+    # ("Count sort", count_sort, gen_6, Comparator.asc),
     # ("Insertion sort", insertion_sort, generators[6]),
     # ("Heap sort", heap_sort),
 ]

@@ -1,6 +1,5 @@
 import matplotlib.animation as anim
 import matplotlib.pyplot as plt
-
 from sorting.config import (
     BAR_COLOR,
     DEFAULT_ARR_ELEMENTS_COUNT,
@@ -66,6 +65,9 @@ def display_window(arr, n: int, gen, interval: int = DEFAULT_SPEED):
 
     ax.set_xlim(0, n)
     ax.set_ylim(min(arr), max(arr) * 1.2)
+
+    plt.xlabel("Number of array elements")
+    plt.ylabel("Element value")
 
     text = ax.text(0.01, 0.93, "", transform=ax.transAxes)
 

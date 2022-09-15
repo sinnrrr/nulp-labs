@@ -18,16 +18,16 @@ def gen_2(n: int):
 
 
 def gen_3(n: int):
-    pass
+    raise NotImplementedError
 
 
 def gen_4(n: int):
-    pass
+    raise NotImplementedError
 
 
 def gen_5(n: int):
-    pass
+    raise NotImplementedError
 
 
 def gen_6(n: int):
-    pass
+    raise NotImplementedError
