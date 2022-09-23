@@ -4,7 +4,6 @@ from colorama import Fore, Style
 
 
 class Comparator:
-
     @staticmethod
     def asc(x, y):
         return x > y
@@ -18,11 +17,8 @@ class Comparator:
         return Comparator.desc(x, y)
 
 
-def random_continious_array(n):
-    arr = [i + 1 for i in range(n)]
-    random.shuffle(arr)
-
-    return arr
+def random_real_array(n, include_negative=True):
+    return [random.uniform(-n if include_negative else 0, n) for _ in range(n)]
 
 
 def swap(A, i, j):
@@ -32,7 +28,6 @@ def swap(A, i, j):
 
 
 class Format:
-
     @staticmethod
     def header(text: str) -> str:
         return Fore.RED + text + Style.RESET_ALL
@@ -42,10 +37,16 @@ class Format:
         formatted_options = []
 
         for idx, option in enumerate(options):
-            formatted_options.append(Fore.BLUE + str(idx + 1) + ") " +
-                                     Fore.CYAN + option[0] + Style.RESET_ALL)
+            formatted_options.append(
+                Fore.BLUE
+                + str(idx + 1)
+                + ") "
+                + Fore.CYAN
+                + option[0]
+                + Style.RESET_ALL
+            )
 
-        return '\n'.join(formatted_options)
+        return "\n".join(formatted_options)
 
     @staticmethod
     def speed_options(options: dict) -> str:
@@ -53,14 +54,24 @@ class Format:
 
         i = 1
         for speed_alias in options.keys():
-            formatted_options.append(Fore.BLUE + str(i) + ") " + Fore.CYAN +
-                                     speed_alias + Style.RESET_ALL)
+            formatted_options.append(
+                Fore.BLUE
+                + str(i)
+                + ") "
+                + Fore.CYAN
+                + speed_alias
+                + Style.RESET_ALL
+            )
             i += 1
 
-        return '\n'.join(formatted_options)
+        return "\n".join(formatted_options)
 
     @staticmethod
     def input(text, default_value):
-        default_value_text = f" [{Fore.GREEN}{default_value}{Fore.BLUE}]" if default_value is not None else ""
+        default_value_text = (
+            f" [{Fore.GREEN}{default_value}{Fore.BLUE}]"
+            if default_value is not None
+            else ""
+        )
 
         return Fore.BLUE + f"{text}{default_value_text}: " + Style.RESET_ALL

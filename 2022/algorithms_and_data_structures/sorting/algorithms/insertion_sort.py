@@ -3,6 +3,11 @@ def swap(A, i, j):
 
 
 def insertion_sort(arr, comparator):
+    """
+    Iterate every element of the array, in inner loop look if
+    current element is bigger/less then the previous element,
+    if not -- check all of the prev elements and swap when found
+    """
     if len(arr) == 1:
         return
     for i in range(1, len(arr)):
