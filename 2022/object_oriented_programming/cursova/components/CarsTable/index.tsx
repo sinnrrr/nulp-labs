@@ -37,6 +37,7 @@ const columns: Array<ColumnsType<Car>[number] & CarsTableEditProps> = [
     title: "Brand",
     dataIndex: "brand",
     edit: {},
+    sorter: (a, b) => a.brand.localeCompare(b.brand),
   },
   {
     title: "Model",

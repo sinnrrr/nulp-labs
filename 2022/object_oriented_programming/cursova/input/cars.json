@@ -1,0 +1,56 @@
+[
+  {
+    "key": 0,
+    "brand": "Mercedes",
+    "model": "Coupe Class E",
+    "autoType": "Lorry",
+    "capacity": 10,
+    "fuelConsumption": 16,
+    "fuelTankVolume": 321
+  },
+  {
+    "key": 1,
+    "brand": "Mercedes",
+    "model": "Rider",
+    "autoType": "Passenger car",
+    "capacity": 18,
+    "fuelConsumption": 12,
+    "fuelTankVolume": 400
+  },
+  {
+    "key": 2,
+    "brand": "BMW",
+    "model": "X3",
+    "autoType": "Passenger car",
+    "capacity": 10,
+    "fuelConsumption": 14,
+    "fuelTankVolume": 300
+  },
+  {
+    "key": 3,
+    "brand": "Opel",
+    "model": "Omega",
+    "autoType": "Passenger car",
+    "capacity": 18,
+    "fuelConsumption": 10,
+    "fuelTankVolume": 250
+  },
+  {
+    "key": 4,
+    "brand": "Opel",
+    "model": "Bringe",
+    "autoType": "Lorry",
+    "capacity": 30,
+    "fuelConsumption": 16,
+    "fuelTankVolume": 420
+  },
+  {
+    "key": 5,
+    "brand": "Dodge",
+    "model": "Viper",
+    "autoType": "Passenger car",
+    "capacity": 11,
+    "fuelConsumption": 22,
+    "fuelTankVolume": 310
+  }
+]

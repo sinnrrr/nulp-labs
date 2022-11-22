@@ -98,15 +98,32 @@ export class CarsUtils {
 }
 
 class CarsPersister {
-  generateDownloadLink(cars: Car[]) {
+  public fileName: string
+
+  constructor(fileName?: string) {
+    this.fileName = fileName || "cars"
+  }
+
+  downloadCarsFile(cars: Car[]) {
     if (!cars.length) return
 
     const raw = carsSerializer(cars)
-    return URL.createObjectURL(
+    const encodedObj = URL.createObjectURL(
       new Blob([raw], {
         type: "application/json",
       })
     )
+
+    // create "a" HTLM element with href to file
+    const link = document.createElement("a")
+    link.href = encodedObj
+    link.download = `${this.fileName}.json`
+    document.body.appendChild(link)
+    link.click()
+
+    // clean up "a" element & remove ObjectURL
+    document.body.removeChild(link)
+    URL.revokeObjectURL(encodedObj)
   }
 
   loadFromFile(file: RcFile, onLoad: (cars: Car[]) => void) {
