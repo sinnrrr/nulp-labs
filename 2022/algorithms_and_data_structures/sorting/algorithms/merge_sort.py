@@ -1,3 +1,23 @@
+"""
+1 4 5 7 2 3 9
+
+1 4 5
+1 4
+5
+1-
+4--->[1,4,5] --
+5-
+                    ---------[]
+7 2 3 9
+7 2
+3 9
+7-
+2--[2, 3, 7, 9] --
+3--
+9-
+"""
+
+
 def merge_sort(arr, comparator):
     return _merge_sort(arr, 0, len(arr) - 1, comparator)
 

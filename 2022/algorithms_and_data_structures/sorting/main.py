@@ -43,7 +43,9 @@ def ask_for_algo(algo_options) -> int:
     default_option = 1
     option_idx_selected = (
         int(
-            input("\n" + Format.input("Enter the option number", default_option))
+            input(
+                "\n" + Format.input("Enter the option number", default_option)
+            )
             or default_option
         )
         - 1
@@ -79,7 +81,7 @@ def display_window(arr, n: int, gen, interval: int = DEFAULT_SPEED):
                 rec.set_height(val)
         epochs[0] += 1
         text.set_text("Operations count :{}".format(epochs[0]))
-        print(f"{epochs[0]})", array)
+        print(f"{round(epochs[0], 2)})", array)
 
     _ = anim.FuncAnimation(
         fig,

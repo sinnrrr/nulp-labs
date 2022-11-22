@@ -1,3 +1,4 @@
+import random
 from math import log, sin
 from statistics import mode
 
@@ -60,14 +61,14 @@ def gen_5(n: int):
 
 
 def gen_6(n: int):
-    """
-    З двох одновимірних масивів цілих чисел сформувати новий,
-    який включає всі парні числа з першого і непарні з другого масиву.
-    Отриманий масив посортувати в порядку зростання.
-    """
-    arr = []
+    # """
+    # З двох одновимірних масивів цілих чисел сформувати новий,
+    # який включає всі парні числа з першого і непарні з другого масиву.
+    # Отриманий масив посортувати в порядку зростання.
+    # """
+    # arr = []
 
-    map(lambda x: arr.append(x) if x % 2 == 0 else None, random_real_array(n))
-    map(lambda x: arr.append(x) if x % 2 != 0 else None, random_real_array(n))
+    # map(lambda x: arr.append(x) if x % 2 == 0 else None, random_real_array(n))
+    # map(lambda x: arr.append(x) if x % 2 != 0 else None, random_real_array(n))
 
-    return arr
+    return [random.randint(1, 10) for _ in range(n)]

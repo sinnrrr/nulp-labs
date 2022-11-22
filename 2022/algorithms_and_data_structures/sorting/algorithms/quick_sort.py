@@ -1,3 +1,22 @@
+"""
+There are various ways of doing this thing.
+
+Pivot as the middle element:
+Recursively selecting pivot as a middle element of the array and throwing
+lower elements to the left and larger to the right.
+
+Pivot as the last element:
+Make two pointers. One remembers last element that is bigger than pivot and the
+second one is iterative. If we occur element, that is lower than pivot, swap
+the pointers and increment the last bigger element pointer.
+When this process got to the end, swap pivot (last element) with the first
+pointer.
+
+Example:
+
+"""
+
+
 def swap(A, i, j):
     A[i], A[j] = A[j], A[i]
 
