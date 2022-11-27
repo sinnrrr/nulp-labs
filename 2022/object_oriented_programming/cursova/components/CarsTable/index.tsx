@@ -85,7 +85,7 @@ export const CarsTable: React.FC = () => {
       {
         key: s.length,
         brand: "Unknown",
-        model: "Unknown",
+        model: "Example",
         autoType: "Passenger car",
         capacity: 0,
         fuelConsumption: 0,
@@ -126,6 +126,8 @@ export const CarsTable: React.FC = () => {
   const leastPowerfulLorry = CarsUtils.capacityExtrema(cars, "Lorry")[MIN]
   const brandsWithBothCarTypes = CarsUtils.brandsWithBothVehicleTypes(cars)
   const fuelConsumptionExtrema = CarsUtils.fuelConsumptionExtremaByBrand(cars)
+
+  console.log({ mostPowerfulPassengerCar, leastPowerfulLorry })
 
   return (
     <Space direction="vertical" size="middle" style={{ display: "flex" }}>
@@ -174,7 +176,9 @@ export const CarsTable: React.FC = () => {
               </Text>{" "}
               and the least powerful lorry is{" "}
               <Text underline>
-                {leastPowerfulLorry.brand} {leastPowerfulLorry.model}
+                {leastPowerfulLorry
+                  ? `${leastPowerfulLorry.brand} ${leastPowerfulLorry.model}`
+                  : "undefined"}
               </Text>
             </Text>
 

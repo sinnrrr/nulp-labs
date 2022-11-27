@@ -4,19 +4,21 @@
 @startuml
 class CarsPersister {
   + constructor(fileName: string)
-  + downloadFileWithTickets(tickets: Ticket[])
-  + loadFromFile(file: RcFile, onLoad: (tickets: Ticket[]) => void)
-  - displayErrors(errors: TicketErrors)
+  + downloadCarsFile(cars: Car[])
+  + loadFromFile(file: RcFile, onLoad: (cars: Car[]) => void)
+  - displayErrors(errors: CarErrors)
 }
 
-class TicketsValidator {
-  + getTicketsErrors(tickets: Ticket[])
+class CarsValidator {
+  + getCarsErrors(cars: Car[])
 }
 
-class TicketsUtils {
-  + mostUsedTicket(tickets: Ticket[])
+class CarsUtils {
+  + capacityExtrema(cars: Car[], carTypeRequired?: Car["autoType"])
+  + fuelConsumptionExtremaByBrand(cars: Car[])
+  + brandsWithBothVehicleTypes(cars: Car[])
 }
 
-TicketsValidator <-- TicketsPersister
+CarsValidator *-- CarsPersister
 @enduml
 ```
