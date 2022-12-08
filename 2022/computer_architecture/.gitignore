@@ -2,3 +2,4 @@
 **/*.pdsprj.*
 */*.jpg
 */*.png
+*/*.out
